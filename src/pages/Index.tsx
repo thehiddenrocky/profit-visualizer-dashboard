@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ActionCard } from "@/components/ActionCard";
 import { CategoryFilter } from "@/components/CategoryFilter";
+import { ChatInterface } from "@/components/chat/ChatInterface";
 
 interface Action {
   title: string;
@@ -107,6 +108,7 @@ const Index = () => {
           ))}
         </div>
       </div>
+      <ChatInterface />
     </div>
   );
 };

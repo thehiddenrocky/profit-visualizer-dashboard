@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MessageSquare, X, Send } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,18 +10,29 @@ interface Message {
 }
 
 const suggestedQuestions = [
-  "How can I implement low-cost actions first?",
-  "Which actions have the highest ROI?",
-  "What are the marketing-focused initiatives?",
-  "How long until I see results?"
+  "How do I implement these SEO improvements?",
+  "What ROI can I expect from SEO changes?",
+  "Are there other quick wins?",
+  "What's the timeline for SEO results?"
 ];
 
 export const ChatInterface = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { content: "Hello! I'm Alfred, your profitability advisor. How can I help you today?", isUser: false }
+    { 
+      content: "Hi! I noticed a quick win opportunity - improving your SEO rankings by including fiber optic related keywords on your homepage could generate €5,000-€10,000 in additional monthly revenue. Would you like to know more?", 
+      isUser: false 
+    }
   ]);
   const [inputValue, setInputValue] = useState('');
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsOpen(true);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleSend = (content: string) => {
     if (!content.trim()) return;
@@ -31,8 +42,18 @@ export const ChatInterface = () => {
     
     // Simulate AI response
     setTimeout(() => {
+      let response = "I'll help you understand that better. Based on our analysis...";
+      
+      if (content.toLowerCase().includes('implement')) {
+        response = "To implement SEO improvements, start by adding these keywords to your homepage: 'fiber optic internet', 'high-speed fiber connection', 'residential fiber optic'. Would you like more specific implementation details?";
+      } else if (content.toLowerCase().includes('roi')) {
+        response = "Based on current search volumes and conversion rates, implementing these SEO changes could bring 50-100 new leads per month, translating to €5,000-€10,000 in additional monthly revenue.";
+      } else if (content.toLowerCase().includes('timeline')) {
+        response = "You should start seeing improvements in search rankings within 4-6 weeks, with full impact realized in 3-4 months. The best part is that these changes can be implemented immediately.";
+      }
+      
       setMessages(prev => [...prev, {
-        content: "I'll help you understand that better. Based on our analysis...",
+        content: response,
         isUser: false
       }]);
     }, 1000);
@@ -49,7 +70,7 @@ export const ChatInterface = () => {
           <span className="hidden group-hover:inline">Chat with Alfred</span>
         </Button>
       ) : (
-        <div className="bg-white rounded-lg shadow-xl w-[380px] h-[500px] flex flex-col border border-gray-200">
+        <div className="bg-white rounded-lg shadow-xl w-[380px] h-[500px] flex flex-col border border-gray-200 animate-fade-in">
           <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-primary text-white rounded-t-lg">
             <h3 className="font-semibold">Alfred - Profitability Advisor</h3>
             <Button

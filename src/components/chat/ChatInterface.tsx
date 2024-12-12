@@ -32,20 +32,11 @@ export const ChatInterface = ({
   const [inputValue, setInputValue] = useState('');
   const previousMessageRef = useRef(initialMessage);
 
-  // Initialize messages and handle updates when initialMessage changes
+  // Reset messages when initialMessage changes
   useEffect(() => {
-    if (initialMessage !== previousMessageRef.current) {
-      setMessages([{ content: initialMessage, isUser: false }]);
-      previousMessageRef.current = initialMessage;
-    }
+    setMessages([{ content: initialMessage, isUser: false }]);
+    previousMessageRef.current = initialMessage;
   }, [initialMessage]);
-
-  // Initial setup
-  useEffect(() => {
-    if (messages.length === 0) {
-      setMessages([{ content: initialMessage, isUser: false }]);
-    }
-  }, []);
 
   // Handle initial open state
   useEffect(() => {

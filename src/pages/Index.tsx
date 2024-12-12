@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ActionCard } from "@/components/ActionCard";
 import { CategoryFilter } from "@/components/CategoryFilter";
 import { ChatInterface } from "@/components/chat/ChatInterface";
+import { MarketIntelligence } from "@/components/MarketIntelligence";
 
 interface Action {
   title: string;
@@ -87,6 +88,8 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto py-8">
+        <MarketIntelligence />
+        
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-secondary mb-2">
             Profitability Action Plan

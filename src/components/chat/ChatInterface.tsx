@@ -9,30 +9,40 @@ interface Message {
   isUser: boolean;
 }
 
-const suggestedQuestions = [
-  "How do I implement these SEO improvements?",
-  "What ROI can I expect from SEO changes?",
-  "Are there other quick wins?",
-  "What's the timeline for SEO results?"
-];
+interface ChatInterfaceProps {
+  initialMessage?: string;
+  suggestedQuestions?: string[];
+  isOpen?: boolean;
+}
 
-export const ChatInterface = () => {
-  const [isOpen, setIsOpen] = useState(false);
+export const ChatInterface = ({ 
+  initialMessage = "Hi! I noticed a quick win opportunity - improving your SEO rankings by including fiber optic related keywords on your homepage could generate €5,000-€10,000 in additional monthly revenue. Would you like to know more?",
+  suggestedQuestions = [
+    "How do I implement these SEO improvements?",
+    "What ROI can I expect from SEO changes?",
+    "Are there other quick wins?",
+    "What's the timeline for SEO results?"
+  ],
+  isOpen: initialIsOpen = false
+}: ChatInterfaceProps) => {
+  const [isOpen, setIsOpen] = useState(initialIsOpen);
   const [messages, setMessages] = useState<Message[]>([
-    { 
-      content: "Hi! I noticed a quick win opportunity - improving your SEO rankings by including fiber optic related keywords on your homepage could generate €5,000-€10,000 in additional monthly revenue. Would you like to know more?", 
-      isUser: false 
-    }
+    { content: initialMessage, isUser: false }
   ]);
   const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-    }, 1000);
+    if (!initialIsOpen) {
+      const timer = setTimeout(() => {
+        setIsOpen(true);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [initialIsOpen]);
 
-    return () => clearTimeout(timer);
-  }, []);
+  useEffect(() => {
+    setIsOpen(initialIsOpen);
+  }, [initialIsOpen]);
 
   const handleSend = (content: string) => {
     if (!content.trim()) return;
@@ -40,16 +50,16 @@ export const ChatInterface = () => {
     setMessages(prev => [...prev, { content, isUser: true }]);
     setInputValue('');
     
-    // Simulate AI response
+    // Simulate AI response based on context
     setTimeout(() => {
       let response = "I'll help you understand that better. Based on our analysis...";
       
       if (content.toLowerCase().includes('implement')) {
-        response = "To implement SEO improvements, start by adding these keywords to your homepage: 'fiber optic internet', 'high-speed fiber connection', 'residential fiber optic'. Would you like more specific implementation details?";
+        response = "To implement these improvements, start by following the implementation steps I outlined. Would you like me to break down each step in more detail?";
       } else if (content.toLowerCase().includes('roi')) {
-        response = "Based on current search volumes and conversion rates, implementing these SEO changes could bring 50-100 new leads per month, translating to €5,000-€10,000 in additional monthly revenue.";
+        response = "Based on our analysis and the evidence provided, implementing these changes could bring significant returns. Would you like to see the detailed calculations?";
       } else if (content.toLowerCase().includes('timeline')) {
-        response = "You should start seeing improvements in search rankings within 4-6 weeks, with full impact realized in 3-4 months. The best part is that these changes can be implemented immediately.";
+        response = "The implementation timeline varies by step. Let me break down the timeline for each phase...";
       }
       
       setMessages(prev => [...prev, {

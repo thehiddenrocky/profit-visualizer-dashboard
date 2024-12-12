@@ -13,6 +13,7 @@ interface ChatInterfaceProps {
   initialMessage?: string;
   suggestedQuestions?: string[];
   isOpen?: boolean;
+  onClose?: () => void;  // Added this prop
 }
 
 export const ChatInterface = ({ 
@@ -23,7 +24,8 @@ export const ChatInterface = ({
     "Are there other quick wins?",
     "What's the timeline for SEO results?"
   ],
-  isOpen: initialIsOpen = false
+  isOpen: initialIsOpen = false,
+  onClose  // Added this prop
 }: ChatInterfaceProps) => {
   const [isOpen, setIsOpen] = useState(initialIsOpen);
   const [messages, setMessages] = useState<Message[]>([
@@ -69,6 +71,13 @@ export const ChatInterface = ({
     }, 1000);
   };
 
+  const handleClose = () => {
+    setIsOpen(false);
+    if (onClose) {
+      onClose();
+    }
+  };
+
   return (
     <div className="fixed bottom-4 right-4 z-50">
       {!isOpen ? (
@@ -86,7 +95,7 @@ export const ChatInterface = ({
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => setIsOpen(false)}
+              onClick={handleClose}
               className="hover:bg-primary-dark text-white"
             >
               <X className="h-5 w-5" />

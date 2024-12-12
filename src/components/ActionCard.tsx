@@ -81,48 +81,50 @@ export const ActionCard = ({
   return (
     <>
       <Card 
-        className={`p-6 hover:shadow-lg transition-shadow duration-200 ${isExpanded ? 'h-auto' : 'h-[200px]'}`}
+        className={`p-6 hover:shadow-lg transition-shadow duration-200 ${isExpanded ? 'h-auto' : 'h-[220px]'}`}
         onClick={() => !isExpanded && setIsExpanded(true)}
       >
         <div className="flex flex-col gap-4">
           <div className="flex justify-between items-start">
-            <h3 className="font-semibold text-lg text-secondary">{title}</h3>
+            <h3 className="font-semibold text-sm text-secondary">{title}</h3>
             <Badge variant="outline" className={getCostColor(cost)}>
               {cost} Cost
             </Badge>
           </div>
-          <p className="text-gray-600 text-sm">{reason}</p>
+          <p className="text-xs text-gray-600 line-clamp-2">{reason}</p>
           <div className="flex justify-between items-center mt-2">
-            <Badge className={getCategoryColor(category)}>{category}</Badge>
+            <Badge className={getCategoryColor(category)}>
+              <span className="text-xs">{category}</span>
+            </Badge>
             <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4 text-gray-500" />
-              <span className="text-sm text-gray-500">{timeline}</span>
+              <Clock className="w-3 h-3 text-gray-500" />
+              <span className="text-xs text-gray-500">{timeline}</span>
             </div>
           </div>
           <div className="flex items-center justify-end gap-2 text-primary">
-            <TrendingUp className="w-4 h-4" />
-            <span className="font-medium">{profitEstimate}</span>
+            <TrendingUp className="w-3 h-3" />
+            <span className="font-medium text-sm">{profitEstimate}</span>
           </div>
 
           {isExpanded && (
             <div className="mt-4 animate-fade-in">
               <div className="border-t pt-4">
-                <h4 className="font-semibold mb-2">Evidence:</h4>
-                <ul className="list-disc list-inside text-sm text-gray-600 mb-4">
+                <h4 className="font-semibold text-sm mb-2">Evidence:</h4>
+                <ul className="list-disc list-inside text-xs text-gray-600 mb-4">
                   {evidence.map((item, index) => (
                     <li key={index}>{item}</li>
                   ))}
                 </ul>
 
-                <h4 className="font-semibold mb-2">Implementation Steps:</h4>
-                <ol className="list-decimal list-inside text-sm text-gray-600 mb-4">
+                <h4 className="font-semibold text-sm mb-2">Implementation Steps:</h4>
+                <ol className="list-decimal list-inside text-xs text-gray-600 mb-4">
                   {implementationSteps.map((step, index) => (
                     <li key={index}>{step}</li>
                   ))}
                 </ol>
 
                 <div className="flex justify-between items-center mb-4">
-                  <span className="text-sm">
+                  <span className="text-xs">
                     <strong>Risk Level:</strong> {riskLevel}
                   </span>
                   <Button
@@ -132,12 +134,12 @@ export const ActionCard = ({
                     }}
                     className="bg-primary hover:bg-primary-dark text-white"
                   >
-                    <MessageSquare className="mr-2 h-4 w-4" />
+                    <MessageSquare className="mr-2 h-3 w-3" />
                     Talk to Alfred
                   </Button>
                 </div>
 
-                <div className="text-sm text-gray-500">
+                <div className="text-xs text-gray-500">
                   <strong>Data Sources:</strong>
                   <ul className="list-disc list-inside mt-1">
                     {dataSources.map((source, index) => (
@@ -156,7 +158,7 @@ export const ActionCard = ({
             }}
             className="w-full flex justify-center items-center mt-4 text-gray-500 hover:text-gray-700"
           >
-            {isExpanded ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
+            {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
           </button>
         </div>
       </Card>
@@ -165,6 +167,7 @@ export const ActionCard = ({
           initialMessage={getInitialMessage()}
           suggestedQuestions={getSuggestedQuestions()}
           isOpen={showAlfred}
+          onClose={() => setShowAlfred(false)}
         />
       )}
     </>

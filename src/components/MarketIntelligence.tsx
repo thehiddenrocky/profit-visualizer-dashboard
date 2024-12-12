@@ -1,5 +1,5 @@
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { MarketIntelligenceCard } from "./MarketIntelligenceCard";
+import { MarketIntelligenceHeader } from "./market-intelligence/MarketIntelligenceHeader";
+import { MarketIntelligenceGrid } from "./market-intelligence/MarketIntelligenceGrid";
 
 const marketData = [
   {
@@ -211,24 +211,11 @@ export const MarketIntelligence = () => {
 
   return (
     <div className="mb-12">
-      <h2 className="text-2xl font-bold text-secondary mb-4">
-        Market Intelligence
-      </h2>
-      <p className="text-gray-600 mb-6">
-        Real-time opportunities based on market analysis
-      </p>
-      
-      <ScrollArea className="w-full">
-        <div className="flex gap-6 pb-4 overflow-x-auto">
-          {marketData.map((data, index) => (
-            <MarketIntelligenceCard
-              key={index}
-              {...data}
-              onTalkToAlfred={handleTalkToAlfred}
-            />
-          ))}
-        </div>
-      </ScrollArea>
+      <MarketIntelligenceHeader />
+      <MarketIntelligenceGrid 
+        marketData={marketData}
+        onTalkToAlfred={handleTalkToAlfred}
+      />
     </div>
   );
 };

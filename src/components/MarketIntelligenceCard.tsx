@@ -75,8 +75,8 @@ export const MarketIntelligenceCard = ({
     <>
       <Card 
         className={cn(
-          "w-[350px] flex-shrink-0 transition-all duration-300",
-          isExpanded ? "h-auto" : "h-[200px]"
+          "w-full transition-all duration-300",
+          isExpanded ? "h-auto" : "h-[220px]"
         )}
         onClick={() => !isExpanded && setIsExpanded(true)}
       >
@@ -88,7 +88,7 @@ export const MarketIntelligenceCard = ({
             </Badge>
           </div>
           
-          <p className="text-gray-600 text-sm mb-3">{summary}</p>
+          <p className="text-gray-600 text-sm mb-3 line-clamp-2">{summary}</p>
           
           <div className="flex justify-between items-center mb-3">
             <Badge className={getDepartmentColor(department)}>{department}</Badge>
@@ -109,14 +109,14 @@ export const MarketIntelligenceCard = ({
                 <h4 className="font-semibold mb-2">Evidence:</h4>
                 <ul className="list-disc list-inside text-sm text-gray-600 mb-4">
                   {evidence.map((item, index) => (
-                    <li key={index}>{item}</li>
+                    <li key={index} className="mb-1">{item}</li>
                   ))}
                 </ul>
 
                 <h4 className="font-semibold mb-2">Implementation Steps:</h4>
                 <ol className="list-decimal list-inside text-sm text-gray-600 mb-4">
                   {implementationSteps.map((step, index) => (
-                    <li key={index}>{step}</li>
+                    <li key={index} className="mb-1">{step}</li>
                   ))}
                 </ol>
 
@@ -140,7 +140,7 @@ export const MarketIntelligenceCard = ({
                   <strong>Data Sources:</strong>
                   <ul className="list-disc list-inside mt-1">
                     {dataSources.map((source, index) => (
-                      <li key={index}>{source}</li>
+                      <li key={index} className="mb-1">{source}</li>
                     ))}
                   </ul>
                 </div>

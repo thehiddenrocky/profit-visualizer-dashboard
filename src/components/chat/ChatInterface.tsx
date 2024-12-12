@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { MessageSquare, X, Send } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -28,18 +28,24 @@ export const ChatInterface = ({
   onClose
 }: ChatInterfaceProps) => {
   const [isVisible, setIsVisible] = useState(initialIsOpen);
-  const [messages, setMessages] = useState<Message[]>([
-    { content: initialMessage, isUser: false }
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
+  const previousMessageRef = useRef(initialMessage);
 
-  // Reset messages and keep chat open when initialMessage changes
+  // Initialize messages and handle updates when initialMessage changes
   useEffect(() => {
-    if (initialMessage) {
+    if (initialMessage !== previousMessageRef.current) {
       setMessages([{ content: initialMessage, isUser: false }]);
-      setIsVisible(true); // Keep chat open when new message arrives
+      previousMessageRef.current = initialMessage;
     }
   }, [initialMessage]);
+
+  // Initial setup
+  useEffect(() => {
+    if (messages.length === 0) {
+      setMessages([{ content: initialMessage, isUser: false }]);
+    }
+  }, []);
 
   // Handle initial open state
   useEffect(() => {

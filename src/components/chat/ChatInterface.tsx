@@ -13,7 +13,7 @@ interface ChatInterfaceProps {
   initialMessage?: string;
   suggestedQuestions?: string[];
   isOpen?: boolean;
-  onClose?: () => void;  // Added this prop
+  onClose?: () => void;
 }
 
 export const ChatInterface = ({ 
@@ -25,13 +25,18 @@ export const ChatInterface = ({
     "What's the timeline for SEO results?"
   ],
   isOpen: initialIsOpen = false,
-  onClose  // Added this prop
+  onClose
 }: ChatInterfaceProps) => {
   const [isOpen, setIsOpen] = useState(initialIsOpen);
   const [messages, setMessages] = useState<Message[]>([
     { content: initialMessage, isUser: false }
   ]);
   const [inputValue, setInputValue] = useState('');
+
+  // Reset messages when initialMessage changes
+  useEffect(() => {
+    setMessages([{ content: initialMessage, isUser: false }]);
+  }, [initialMessage]);
 
   useEffect(() => {
     if (!initialIsOpen) {

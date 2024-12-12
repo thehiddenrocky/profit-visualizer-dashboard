@@ -27,28 +27,33 @@ export const ChatInterface = ({
   isOpen: initialIsOpen = false,
   onClose
 }: ChatInterfaceProps) => {
-  const [isOpen, setIsOpen] = useState(initialIsOpen);
+  const [isVisible, setIsVisible] = useState(initialIsOpen);
   const [messages, setMessages] = useState<Message[]>([
     { content: initialMessage, isUser: false }
   ]);
   const [inputValue, setInputValue] = useState('');
 
-  // Reset messages when initialMessage changes
+  // Reset messages and keep chat open when initialMessage changes
   useEffect(() => {
-    setMessages([{ content: initialMessage, isUser: false }]);
+    if (initialMessage) {
+      setMessages([{ content: initialMessage, isUser: false }]);
+      setIsVisible(true); // Keep chat open when new message arrives
+    }
   }, [initialMessage]);
 
+  // Handle initial open state
   useEffect(() => {
     if (!initialIsOpen) {
       const timer = setTimeout(() => {
-        setIsOpen(true);
+        setIsVisible(true);
       }, 1000);
       return () => clearTimeout(timer);
     }
   }, [initialIsOpen]);
 
+  // Sync with parent's isOpen prop
   useEffect(() => {
-    setIsOpen(initialIsOpen);
+    setIsVisible(initialIsOpen);
   }, [initialIsOpen]);
 
   const handleSend = (content: string) => {
@@ -77,7 +82,7 @@ export const ChatInterface = ({
   };
 
   const handleClose = () => {
-    setIsOpen(false);
+    setIsVisible(false);
     if (onClose) {
       onClose();
     }
@@ -85,9 +90,9 @@ export const ChatInterface = ({
 
   return (
     <div className="fixed bottom-4 right-4 z-50">
-      {!isOpen ? (
+      {!isVisible ? (
         <Button
-          onClick={() => setIsOpen(true)}
+          onClick={() => setIsVisible(true)}
           className="group flex items-center gap-2 bg-primary hover:bg-primary-dark text-white rounded-full px-4 py-2 shadow-lg transition-all duration-300 hover:shadow-xl"
         >
           <MessageSquare className="h-5 w-5" />

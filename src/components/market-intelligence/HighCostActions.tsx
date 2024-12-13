@@ -6,7 +6,7 @@ export const HighCostActions = () => {
   const highCostData = [
     {
       title: "Deploy Regional Fiber Network Expansion",
-      summary: "Rapid population growth and new housing projects in several municipalities.",
+      summary: "Population growth in new housing areas - infrastructure expansion opportunity",
       expectedGain: 75000,
       implementationCost: 400000,
       timeline: "12-18 months",
@@ -29,7 +29,81 @@ export const HighCostActions = () => {
         "Local media coverage"
       ]
     },
-    // ... Add all other high cost cards here
+    {
+      title: "Expand Fiber Network to Underserved Areas",
+      summary: "Identified underserved regions with high demand - market penetration opportunity",
+      expectedGain: 50000,
+      implementationCost: 300000,
+      timeline: "6-12 months",
+      costLevel: "High" as const,
+      department: "Infrastructure",
+      evidence: [
+        "Market analysis indicates demand",
+        "Community feedback supports expansion",
+        "Competitor presence is minimal"
+      ],
+      implementationSteps: [
+        "Conduct feasibility studies",
+        "Engage with local stakeholders",
+        "Develop marketing strategy"
+      ],
+      riskLevel: "Medium",
+      dataSources: [
+        "Market research reports",
+        "Community surveys",
+        "Competitor analysis"
+      ]
+    },
+    {
+      title: "Upgrade Existing Fiber Infrastructure",
+      summary: "Aging infrastructure identified - opportunity to enhance service quality",
+      expectedGain: 60000,
+      implementationCost: 250000,
+      timeline: "8-10 months",
+      costLevel: "High" as const,
+      department: "Infrastructure",
+      evidence: [
+        "Customer complaints about service",
+        "Performance metrics indicate need for upgrades",
+        "Competitor upgrades are underway"
+      ],
+      implementationSteps: [
+        "Assess current infrastructure",
+        "Plan upgrade phases",
+        "Communicate with customers"
+      ],
+      riskLevel: "Medium",
+      dataSources: [
+        "Customer feedback",
+        "Performance analytics",
+        "Industry benchmarks"
+      ]
+    },
+    {
+      title: "Launch 5G Fiber Services",
+      summary: "Emerging demand for 5G services - capitalize on technological advancements",
+      expectedGain: 80000,
+      implementationCost: 500000,
+      timeline: "12-24 months",
+      costLevel: "High" as const,
+      department: "R&D",
+      evidence: [
+        "Market trends show increasing 5G adoption",
+        "Competitors are launching similar services",
+        "Consumer interest in faster internet"
+      ],
+      implementationSteps: [
+        "Research technology requirements",
+        "Develop service offerings",
+        "Market launch strategy"
+      ],
+      riskLevel: "High",
+      dataSources: [
+        "Industry reports",
+        "Consumer surveys",
+        "Competitor analysis"
+      ]
+    },
   ];
 
   return (

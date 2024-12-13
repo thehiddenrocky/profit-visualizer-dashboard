@@ -1,8 +1,7 @@
 export const lowCostCardsData = [
-  // Priority cards first
   {
     title: "Responding to Competitor Price Increase",
-    summary: "DNA's website shows they raised fiber prices by 5% in Helsinki. Current Lounea fiber packages remain ~10% cheaper than the local market average. No negative sentiment detected on social media regarding price increases.",
+    summary: "DNA raised fiber prices by 5% in Helsinki - opportunity to highlight Lounea's competitive pricing",
     expectedGain: 6000,
     implementationCost: 500,
     timeline: "1-2 weeks",
@@ -27,7 +26,7 @@ export const lowCostCardsData = [
   },
   {
     title: "Positioning Against Long-Term Contracts of Competitors",
-    summary: "Competitor contract terms (e.g., 5-year lock-ins) discussed negatively on social media. Lounea currently offers shorter commitments.",
+    summary: "Negative social sentiment around competitor lock-ins - opportunity to promote Lounea's flexible terms",
     expectedGain: 4000,
     implementationCost: 500,
     timeline: "1 week",
@@ -52,7 +51,7 @@ export const lowCostCardsData = [
   },
   {
     title: "Showcasing Rapid Installation Times vs. Competitors",
-    summary: "Reddit threads mention competitor installations taking weeks. Lounea's internal data suggests shorter setup periods.",
+    summary: "Competitor installations taking weeks - Lounea's faster setup times can be leveraged",
     expectedGain: 4000,
     implementationCost: 300,
     timeline: "1 week",
@@ -77,7 +76,7 @@ export const lowCostCardsData = [
   },
   {
     title: "Improving Organic Visibility with Competitor Keyword Gaps",
-    summary: "SEO analysis shows competitor sites rank for 'fastest fiber in [CityName]' while Lounea's pages omit city-specific speed terms.",
+    summary: "Competitors dominating city-specific speed terms - SEO opportunity identified",
     expectedGain: 4000,
     implementationCost: 800,
     timeline: "2 weeks",
@@ -102,7 +101,7 @@ export const lowCostCardsData = [
   },
   {
     title: "Highlighting Reliability Over Competitors' Downtime",
-    summary: "Public complaint forums show recent competitor outages with negative customer sentiment. Lounea's network performance reports less than 0.1% downtime last quarter.",
+    summary: "Recent competitor outages reported - Lounea's 99.9% uptime can be highlighted",
     expectedGain: 4000,
     implementationCost: 600,
     timeline: "1 week",
@@ -125,10 +124,9 @@ export const lowCostCardsData = [
       "Public feedback"
     ]
   },
-  // Remaining cards
   {
     title: "Leveraging Fiber-Related SEO Keywords",
-    summary: "External SEO tools show increasing search volume for 'affordable fiber internet Finland' and competitors ranking well. Lounea's pages don't include these keyphrases.",
+    summary: "Growing search volume for 'affordable fiber internet Finland' - SEO opportunity",
     expectedGain: 7500,
     implementationCost: 1000,
     timeline: "2 weeks",
@@ -154,7 +152,7 @@ export const lowCostCardsData = [
   },
   {
     title: "Showcasing Price Stability",
-    summary: "Competitor press releases reveal frequent tariff adjustments. No negative reaction to stable pricing strategies found in social sentiment.",
+    summary: "Competitors showing frequent price changes - Lounea's stability can be marketed",
     expectedGain: 5000,
     implementationCost: 400,
     timeline: "1 week",
@@ -179,7 +177,7 @@ export const lowCostCardsData = [
   },
   {
     title: "Using Public Speed Test Awards",
-    summary: "Public speedtest rankings show Lounea's average speeds outperform competitors in multiple regions.",
+    summary: "Lounea outperforms competitors in speed tests - marketing opportunity",
     expectedGain: 3000,
     implementationCost: 500,
     timeline: "1 week",
@@ -204,7 +202,7 @@ export const lowCostCardsData = [
   },
   {
     title: "Aligning with Government Broadband Targets",
-    summary: "Government documents indicate targets for minimum broadband speeds and coverage. Competitors do not visibly align marketing with these official goals.",
+    summary: "Government broadband goals not highlighted by competitors - positioning opportunity",
     expectedGain: 3000,
     implementationCost: 500,
     timeline: "2 weeks",
@@ -229,7 +227,7 @@ export const lowCostCardsData = [
   },
   {
     title: "Adding Visual Cost Comparison Chart",
-    summary: "Aggregator sites show Lounea's pricing currently under typical market by ~10%. Competitors' rates are easily accessed.",
+    summary: "Lounea pricing 10% below market average - visual comparison opportunity",
     expectedGain: 5000,
     implementationCost: 700,
     timeline: "2 weeks",
@@ -254,7 +252,7 @@ export const lowCostCardsData = [
   },
   {
     title: "Promoting No Hidden Fees Policy",
-    summary: "Forum complaints indicate hidden surcharges on competitor bills.",
+    summary: "Hidden charges complaints about competitors - transparency marketing opportunity",
     expectedGain: 4000,
     implementationCost: 300,
     timeline: "1 week",
@@ -279,7 +277,7 @@ export const lowCostCardsData = [
   },
   {
     title: "Leveraging Positive Industry Mentions",
-    summary: "Industry news sites mention Lounea positively, while competitor mentions are neutral.",
+    summary: "Positive media coverage vs neutral competitor mentions - PR opportunity",
     expectedGain: 3000,
     implementationCost: 400,
     timeline: "1 week",
@@ -304,7 +302,7 @@ export const lowCostCardsData = [
   },
   {
     title: "Differentiating on Customer Support Speed",
-    summary: "Public complaints about competitor support response times appear on forums and social media. Lounea's internal metrics show faster response.",
+    summary: "Slow competitor support response times reported - service differentiation opportunity",
     expectedGain: 5000,
     implementationCost: 600,
     timeline: "2 weeks",
@@ -329,7 +327,7 @@ export const lowCostCardsData = [
   },
   {
     title: "Using Competitor Job Postings to Pre-Empt Their Moves",
-    summary: "Competitors hiring IoT engineers suggest a future IoT offering. No immediate IoT marketing from Lounea yet.",
+    summary: "Competitor IoT hiring suggests future offering - early market positioning opportunity",
     expectedGain: 8000,
     implementationCost: 1000,
     timeline: "3 weeks",
@@ -354,7 +352,7 @@ export const lowCostCardsData = [
   },
   {
     title: "Emphasizing No Throttling Policies",
-    summary: "Social media hints competitor may throttle speeds during peak times. No official competitor denial found.",
+    summary: "Social media hints at competitor throttling - network quality differentiation opportunity",
     expectedGain: 4000,
     implementationCost: 300,
     timeline: "1 week",
@@ -379,7 +377,7 @@ export const lowCostCardsData = [
   },
   {
     title: "Citing Public Rankings of Wi-Fi Hardware Compatibility",
-    summary: "External tech reviews show certain routers as top-rated; competitor bundles average hardware.",
+    summary: "Competitors bundling average hardware - equipment quality differentiation opportunity",
     expectedGain: 8000,
     implementationCost: 800,
     timeline: "2 weeks",

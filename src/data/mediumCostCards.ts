@@ -1,7 +1,7 @@
 export const mediumCostCardsData = [
   {
     title: "Small-Business Package Based on Market Data",
-    summary: "B2B Market Reports show SMEs seek integrated solutions (internet + basic IT support). LinkedIn Groups indicate SMB owners want hassle-free ISP services.",
+    summary: "SMEs seeking integrated solutions - opportunity for bundled services",
     expectedGain: 6000,
     implementationCost: 5000,
     timeline: "6-8 weeks",
@@ -27,7 +27,7 @@ export const mediumCostCardsData = [
   },
   {
     title: "Integrate Crowdsourced Speedtest Results",
-    summary: "Crowdsourced platforms show Lounea's speeds surpass competitors by ~10%. Users trust independent speed tests over ISP claims.",
+    summary: "Lounea speeds 10% above competitors - third-party validation opportunity",
     expectedGain: 4000,
     implementationCost: 3500,
     timeline: "5-7 weeks",
@@ -53,7 +53,7 @@ export const mediumCostCardsData = [
   },
   {
     title: "Business ROI Calculator Implementation",
-    summary: "B2B whitepapers highlight connectivity cost savings. Companies seek ISP cost justification on LinkedIn forums.",
+    summary: "Companies seeking cost justification - ROI tool opportunity",
     expectedGain: 7000,
     implementationCost: 4000,
     timeline: "6-8 weeks",
@@ -79,7 +79,7 @@ export const mediumCostCardsData = [
   },
   {
     title: "Quarterly Industry Snapshot Video Briefing",
-    summary: "Tech news aggregators show high engagement with video content. Competitors rely mainly on static blog posts.",
+    summary: "High engagement with video content - format differentiation opportunity",
     expectedGain: 4000,
     implementationCost: 5000,
     timeline: "8 weeks",

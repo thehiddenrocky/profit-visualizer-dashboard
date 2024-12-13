@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Clock, CheckCircle, Calendar, AlertTriangle, MessageSquare } from 'lucide-react';
+import { Clock, CheckCircle, AlertTriangle, MessageSquare } from 'lucide-react';
 import { ChatInterface } from './chat/ChatInterface';
-import { EuroSignalBars } from './market-intelligence/EuroSignalBars';
 
 interface MarketIntelligenceCardProps {
   title: string;
@@ -21,7 +20,6 @@ interface MarketIntelligenceCardProps {
 }
 
 export const MarketIntelligenceCard = ({
-  title,
   summary,
   expectedGain,
   timeline,
@@ -40,22 +38,14 @@ export const MarketIntelligenceCard = ({
   };
 
   const getInitialMessage = () => 
-    `Hi! I noticed a quick win opportunity - ${title} could generate €${expectedGain} in additional monthly revenue. Would you like to know more?`;
+    `Hi! I noticed a quick win opportunity that could generate €${expectedGain} in additional monthly revenue. Would you like to know more?`;
 
   const getSuggestedQuestions = () => [
-    `How do I implement ${title}?`,
+    `How do I implement this opportunity?`,
     `What's the detailed ROI calculation for this action?`,
     `Can you break down the implementation steps?`,
     `What are the main risks to consider?`
   ];
-
-  // Format summary to signal format
-  const formatSignal = (text: string) => {
-    const parts = text.split('•').map(part => part.trim());
-    return parts.length > 1 ? parts : [text, 'Market Update'];
-  };
-
-  const [signalMetric, signalType] = formatSignal(summary);
 
   return (
     <>
@@ -63,18 +53,14 @@ export const MarketIntelligenceCard = ({
         <div className="flex flex-col gap-2">
           <div className="flex justify-between items-start">
             <div className="flex items-start gap-2">
-              <div className="flex flex-col items-end gap-2">
-                <EuroSignalBars amount={expectedGain} />
-                <Badge className={`${getDepartmentColor(department)} mt-1`}>
-                  <span className="text-xs">{department}</span>
-                </Badge>
-              </div>
+              <Badge className={getDepartmentColor(department)}>
+                <span className="text-xs">{department}</span>
+              </Badge>
             </div>
           </div>
           
           <div className="flex justify-between items-center text-sm text-gray-600 mb-4">
-            <span className="font-medium">{signalMetric}</span>
-            <span className="text-xs text-gray-500">• {signalType}</span>
+            <span className="font-medium">{summary}</span>
           </div>
         </div>
 

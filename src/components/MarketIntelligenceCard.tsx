@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Clock, CheckCircle, Calendar, AlertTriangle, MessageSquare, FileText } from 'lucide-react';
+import { Clock, CheckCircle, Calendar, AlertTriangle, MessageSquare } from 'lucide-react';
 import { ChatInterface } from './chat/ChatInterface';
 import { EuroSignalBars } from './market-intelligence/EuroSignalBars';
 import { CardHeader } from './market-intelligence/CardHeader';
@@ -60,22 +60,23 @@ export const MarketIntelligenceCard = ({
   return (
     <>
       <Card className="w-full p-4">
-        <div className="flex justify-between items-start mb-4">
-          <CardHeader
-            title={title}
-            costLevel={costLevel}
-            onShowMore={() => setIsExpanded(!isExpanded)}
-            onTalkToAlfred={() => setShowAlfred(true)}
-          />
-          <EuroSignalBars amount={expectedGain} />
-        </div>
-        
-        <p className="text-gray-600 text-xs line-clamp-2 mb-4">{summary}</p>
-        
-        <div className="flex justify-between items-center mb-4">
-          <Badge className={getDepartmentColor(department)}>
-            <span className="text-xs">{department}</span>
-          </Badge>
+        <div className="flex flex-col gap-2">
+          <div className="flex justify-between items-start">
+            <CardHeader
+              title={title}
+              costLevel={costLevel}
+              onShowMore={() => setIsExpanded(!isExpanded)}
+              onTalkToAlfred={() => setShowAlfred(true)}
+            />
+            <div className="flex flex-col items-end gap-2">
+              <EuroSignalBars amount={expectedGain} />
+              <Badge className={`${getDepartmentColor(department)} mt-1`}>
+                <span className="text-xs">{department}</span>
+              </Badge>
+            </div>
+          </div>
+          
+          <p className="text-gray-600 text-xs line-clamp-2 mb-4">{summary}</p>
         </div>
 
         <div className="flex items-center text-xs text-gray-500 mb-4">
@@ -141,7 +142,6 @@ export const MarketIntelligenceCard = ({
             onClick={() => setIsExpanded(!isExpanded)}
             className="flex items-center gap-2 text-primary hover:text-primary-dark transition-colors"
           >
-            <FileText className="w-4 h-4" />
             <span className="text-xs">View report</span>
           </button>
         </div>

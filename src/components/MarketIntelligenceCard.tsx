@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Clock, CheckCircle, AlertTriangle, MessageSquare } from 'lucide-react';
+import { Clock, CheckCircle, AlertTriangle, MessageSquare, TrendingUp } from 'lucide-react';
 import { ChatInterface } from './chat/ChatInterface';
 
 interface MarketIntelligenceCardProps {
@@ -20,6 +20,7 @@ interface MarketIntelligenceCardProps {
 }
 
 export const MarketIntelligenceCard = ({
+  title,
   summary,
   expectedGain,
   timeline,
@@ -38,14 +39,22 @@ export const MarketIntelligenceCard = ({
   };
 
   const getInitialMessage = () => 
-    `Hi! I noticed a quick win opportunity that could generate €${expectedGain} in additional monthly revenue. Would you like to know more?`;
+    `Hi! I noticed a quick win opportunity - ${title} could generate ${expectedGain} in additional monthly revenue. Would you like to know more?`;
 
   const getSuggestedQuestions = () => [
-    `How do I implement this opportunity?`,
+    `How do I implement ${title}?`,
     `What's the detailed ROI calculation for this action?`,
     `Can you break down the implementation steps?`,
     `What are the main risks to consider?`
   ];
+
+  // Format summary to signal format
+  const formatSignal = (text: string) => {
+    const parts = text.split('•').map(part => part.trim());
+    return parts.length > 1 ? parts : [text, 'Market Update'];
+  };
+
+  const [signalMetric, signalType] = formatSignal(summary);
 
   return (
     <>
@@ -57,9 +66,10 @@ export const MarketIntelligenceCard = ({
             </Badge>
           </div>
           
-          <p className="text-sm text-gray-600 mb-4">
-            {summary}
-          </p>
+          <div className="flex items-center gap-2 text-sm text-gray-600 mb-4">
+            <TrendingUp className="w-4 h-4 text-gray-500" />
+            <span className="font-medium">{signalMetric} • {signalType}</span>
+          </div>
         </div>
 
         <div className="flex items-center text-xs text-gray-500 mb-4">

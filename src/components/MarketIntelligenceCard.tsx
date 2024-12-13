@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, ChevronUp, MessageSquare, TrendingUp } from 'lucide-react';
+import { TrendingUp, Clock, ChevronDown, ChevronUp, MessageSquare } from 'lucide-react';
 import { cn } from "@/lib/utils";
 import { ChatInterface } from './chat/ChatInterface';
 
@@ -18,7 +18,7 @@ interface MarketIntelligenceCardProps {
   implementationSteps: string[];
   riskLevel: string;
   dataSources: string[];
-  onTalkToAlfred: () => void;
+  onTalkToAlfred?: () => void; // Made optional with '?'
 }
 
 export const MarketIntelligenceCard = ({
@@ -75,31 +75,36 @@ export const MarketIntelligenceCard = ({
     <>
       <Card 
         className={cn(
-          "w-[350px] flex-shrink-0 transition-all duration-300",
-          isExpanded ? "h-auto" : "h-[200px]"
+          "w-full transition-all duration-300",
+          isExpanded ? "h-auto" : "h-[220px]"
         )}
         onClick={() => !isExpanded && setIsExpanded(true)}
       >
         <div className="p-4">
           <div className="flex justify-between items-start mb-3">
-            <h3 className="font-semibold text-lg text-secondary">{title}</h3>
+            <h3 className="font-semibold text-sm text-secondary">{title}</h3>
             <Badge variant="outline" className={getCostColor(costLevel)}>
               {costLevel} Cost
             </Badge>
           </div>
           
-          <p className="text-gray-600 text-sm mb-3">{summary}</p>
+          <p className="text-gray-600 text-xs line-clamp-2 mb-3">{summary}</p>
           
           <div className="flex justify-between items-center mb-3">
-            <Badge className={getDepartmentColor(department)}>{department}</Badge>
-            <div className="flex items-center gap-2 text-primary">
-              <TrendingUp className="w-4 h-4" />
-              <span className="font-medium">€{expectedGain}/month</span>
+            <Badge className={getDepartmentColor(department)}>
+              <span className="text-xs">{department}</span>
+            </Badge>
+            <div className="flex items-center gap-2">
+              <TrendingUp className="w-4 h-4 text-green-600" />
+              <span className="font-medium text-green-600">€{expectedGain}/month</span>
             </div>
           </div>
 
-          <div className="flex justify-between items-center text-sm text-gray-500">
-            <span>Timeline: {timeline}</span>
+          <div className="flex justify-between items-center text-xs text-gray-500">
+            <div className="flex items-center gap-1">
+              <Clock className="w-3 h-3" />
+              <span>{timeline}</span>
+            </div>
             <span>Cost: €{implementationCost}</span>
           </div>
 
@@ -109,14 +114,14 @@ export const MarketIntelligenceCard = ({
                 <h4 className="font-semibold mb-2">Evidence:</h4>
                 <ul className="list-disc list-inside text-sm text-gray-600 mb-4">
                   {evidence.map((item, index) => (
-                    <li key={index}>{item}</li>
+                    <li key={index} className="mb-1">{item}</li>
                   ))}
                 </ul>
 
                 <h4 className="font-semibold mb-2">Implementation Steps:</h4>
                 <ol className="list-decimal list-inside text-sm text-gray-600 mb-4">
                   {implementationSteps.map((step, index) => (
-                    <li key={index}>{step}</li>
+                    <li key={index} className="mb-1">{step}</li>
                   ))}
                 </ol>
 
@@ -140,7 +145,7 @@ export const MarketIntelligenceCard = ({
                   <strong>Data Sources:</strong>
                   <ul className="list-disc list-inside mt-1">
                     {dataSources.map((source, index) => (
-                      <li key={index}>{source}</li>
+                      <li key={index} className="mb-1">{source}</li>
                     ))}
                   </ul>
                 </div>
@@ -155,7 +160,7 @@ export const MarketIntelligenceCard = ({
             }}
             className="w-full flex justify-center items-center mt-4 text-gray-500 hover:text-gray-700"
           >
-            {isExpanded ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
+            {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
           </button>
         </div>
       </Card>
@@ -164,6 +169,7 @@ export const MarketIntelligenceCard = ({
           initialMessage={getInitialMessage()}
           suggestedQuestions={getSuggestedQuestions()}
           isOpen={showAlfred}
+          onClose={() => setShowAlfred(false)}
         />
       )}
     </>

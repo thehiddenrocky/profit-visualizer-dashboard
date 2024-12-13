@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { MessageSquare, X, Send } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,7 +13,7 @@ interface ChatInterfaceProps {
   initialMessage?: string;
   suggestedQuestions?: string[];
   isOpen?: boolean;
-  onClose?: () => void;  // Added this prop
+  onClose?: () => void;
 }
 
 export const ChatInterface = ({ 
@@ -25,25 +25,41 @@ export const ChatInterface = ({
     "What's the timeline for SEO results?"
   ],
   isOpen: initialIsOpen = false,
-  onClose  // Added this prop
+  onClose
 }: ChatInterfaceProps) => {
-  const [isOpen, setIsOpen] = useState(initialIsOpen);
-  const [messages, setMessages] = useState<Message[]>([
-    { content: initialMessage, isUser: false }
-  ]);
+  const [isVisible, setIsVisible] = useState(initialIsOpen);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
+  const messageKey = useRef(initialMessage); // Track message changes
 
+  // Reset messages when initialMessage changes
+  useEffect(() => {
+    if (messageKey.current !== initialMessage) {
+      setMessages([{ content: initialMessage, isUser: false }]);
+      messageKey.current = initialMessage;
+    }
+  }, [initialMessage]);
+
+  // Initial setup
+  useEffect(() => {
+    if (messages.length === 0) {
+      setMessages([{ content: initialMessage, isUser: false }]);
+    }
+  }, []);
+
+  // Handle initial open state
   useEffect(() => {
     if (!initialIsOpen) {
       const timer = setTimeout(() => {
-        setIsOpen(true);
+        setIsVisible(true);
       }, 1000);
       return () => clearTimeout(timer);
     }
   }, [initialIsOpen]);
 
+  // Sync with parent's isOpen prop
   useEffect(() => {
-    setIsOpen(initialIsOpen);
+    setIsVisible(initialIsOpen);
   }, [initialIsOpen]);
 
   const handleSend = (content: string) => {
@@ -72,7 +88,7 @@ export const ChatInterface = ({
   };
 
   const handleClose = () => {
-    setIsOpen(false);
+    setIsVisible(false);
     if (onClose) {
       onClose();
     }
@@ -80,9 +96,9 @@ export const ChatInterface = ({
 
   return (
     <div className="fixed bottom-4 right-4 z-50">
-      {!isOpen ? (
+      {!isVisible ? (
         <Button
-          onClick={() => setIsOpen(true)}
+          onClick={() => setIsVisible(true)}
           className="group flex items-center gap-2 bg-primary hover:bg-primary-dark text-white rounded-full px-4 py-2 shadow-lg transition-all duration-300 hover:shadow-xl"
         >
           <MessageSquare className="h-5 w-5" />

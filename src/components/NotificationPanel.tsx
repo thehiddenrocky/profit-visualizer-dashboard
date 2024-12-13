@@ -18,6 +18,10 @@ interface Notification {
   };
   icon: 'trend' | 'alert';
   profitEstimate?: string;
+  chatContext?: {
+    initialMessage: string;
+    suggestedQuestions: string[];
+  };
 }
 
 const notifications: Notification[] = [
@@ -33,7 +37,16 @@ const notifications: Notification[] = [
       link: '#'
     },
     icon: 'trend',
-    profitEstimate: '€8,000/month'
+    profitEstimate: '€8,000/month',
+    chatContext: {
+      initialMessage: "Hi! I noticed DNA has increased their fiber prices by 5% in the Helsinki region. This presents an opportunity to adjust our pricing strategy. Would you like to know more about the potential €8,000 monthly revenue increase?",
+      suggestedQuestions: [
+        "Why did DNA increase their prices?",
+        "What's the customer sentiment about DNA's price change?",
+        "How should we implement a similar price increase?",
+        "What are the risks of following DNA's pricing?"
+      ]
+    }
   },
   {
     id: '2',
@@ -47,7 +60,16 @@ const notifications: Notification[] = [
       link: '#'
     },
     icon: 'alert',
-    profitEstimate: '€12,000/month'
+    profitEstimate: '€12,000/month',
+    chatContext: {
+      initialMessage: "Hi! I noticed Telia has launched a new B2B security bundle package. This market move could impact our enterprise segment. We could potentially generate €12,000 in monthly revenue by developing a competitive offering. Would you like to know more?",
+      suggestedQuestions: [
+        "What's included in Telia's security bundle?",
+        "How are enterprise customers responding?",
+        "What security features do we currently offer?",
+        "How long would it take to launch a similar package?"
+      ]
+    }
   },
   {
     id: '3',
@@ -201,16 +223,6 @@ export const NotificationPanel = () => {
     }
   };
 
-  const getInitialMessage = (notification: Notification) => 
-    `Hi! I noticed a market signal - ${notification.title.toLowerCase()}. This could ${notification.profitEstimate?.includes('risk') ? 'impact' : 'generate'} ${notification.profitEstimate} in ${notification.profitEstimate?.includes('risk') ? 'potential losses' : 'additional revenue'}. Would you like to know more?`;
-
-  const getSuggestedQuestions = (notification: Notification) => [
-    `What's the detailed impact of ${notification.title.toLowerCase()}?`,
-    `How can we respond to this market signal?`,
-    `What are the main risks to consider?`,
-    `Can you provide more market data about this?`
-  ];
-
   return (
     <>
       <Card className="w-[320px] shadow-lg">
@@ -257,10 +269,10 @@ export const NotificationPanel = () => {
           </div>
         </ScrollArea>
       </Card>
-      {selectedNotification && (
+      {selectedNotification && selectedNotification.chatContext && (
         <ChatInterface 
-          initialMessage={getInitialMessage(selectedNotification)}
-          suggestedQuestions={getSuggestedQuestions(selectedNotification)}
+          initialMessage={selectedNotification.chatContext.initialMessage}
+          suggestedQuestions={selectedNotification.chatContext.suggestedQuestions}
           isOpen={!!selectedNotification}
           onClose={() => setSelectedNotification(null)}
         />

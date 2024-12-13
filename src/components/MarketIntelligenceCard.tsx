@@ -50,6 +50,14 @@ export const MarketIntelligenceCard = ({
     `What are the main risks to consider?`
   ];
 
+  // Format summary to signal format
+  const formatSignal = (text: string) => {
+    const parts = text.split('•').map(part => part.trim());
+    return parts.length > 1 ? parts : [text, 'Market Update'];
+  };
+
+  const [signalMetric, signalType] = formatSignal(summary);
+
   return (
     <>
       <Card className="w-full p-4">
@@ -69,7 +77,10 @@ export const MarketIntelligenceCard = ({
             </div>
           </div>
           
-          <p className="text-gray-600 text-xs line-clamp-2 mb-4">{summary}</p>
+          <div className="flex justify-between items-center text-sm text-gray-600 mb-4">
+            <span className="font-medium">{signalMetric}</span>
+            <span className="text-xs text-gray-500">• {signalType}</span>
+          </div>
         </div>
 
         <div className="flex items-center text-xs text-gray-500 mb-4">
@@ -80,8 +91,12 @@ export const MarketIntelligenceCard = ({
         </div>
 
         <div className="mb-4">
-          <h4 className="text-sm font-semibold mb-2">Implementation Steps:</h4>
-          <ol className="list-decimal list-inside text-sm text-gray-600">
+          <div className="flex items-center">
+            <div className="flex-grow border-t border-gray-200"></div>
+            <span className="px-3 text-xs text-gray-400 uppercase tracking-wider font-medium">ACTIONS</span>
+            <div className="flex-grow border-t border-gray-200"></div>
+          </div>
+          <ol className="list-decimal list-inside text-sm text-gray-600 mt-2">
             {implementationSteps.map((step, index) => (
               <li key={index} className="mb-1">{step}</li>
             ))}

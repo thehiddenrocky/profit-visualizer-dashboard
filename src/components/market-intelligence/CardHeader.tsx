@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { Info } from 'lucide-react';
+import { FileText } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
 interface CardHeaderProps {
@@ -33,9 +33,6 @@ export const CardHeader = ({
       <div className="flex items-start gap-2">
         <div>
           <h3 className="font-semibold text-sm text-secondary">{title}</h3>
-          <Badge variant="outline" className={getCostColor(costLevel)}>
-            {costLevel} Cost
-          </Badge>
         </div>
       </div>
       <Button
@@ -44,7 +41,7 @@ export const CardHeader = ({
         onClick={onShowMore}
         className="mt-1"
       >
-        <Info className="h-4 w-4 text-gray-500" />
+        <FileText className="h-4 w-4 text-gray-500" />
       </Button>
     </div>
   );

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Clock, BarChart, CheckCircle, Calendar, AlertTriangle, MessageSquare } from 'lucide-react';
+import { Clock, CheckCircle, Calendar, AlertTriangle, MessageSquare } from 'lucide-react';
 import { ChatInterface } from './chat/ChatInterface';
 import { EuroSignalBars } from './market-intelligence/EuroSignalBars';
 import { CardHeader } from './market-intelligence/CardHeader';
@@ -60,12 +60,15 @@ export const MarketIntelligenceCard = ({
   return (
     <>
       <Card className="w-full p-4">
-        <CardHeader
-          title={title}
-          costLevel={costLevel}
-          onShowMore={() => setIsExpanded(!isExpanded)}
-          onTalkToAlfred={() => setShowAlfred(true)}
-        />
+        <div className="flex justify-between items-start mb-4">
+          <CardHeader
+            title={title}
+            costLevel={costLevel}
+            onShowMore={() => setIsExpanded(!isExpanded)}
+            onTalkToAlfred={() => setShowAlfred(true)}
+          />
+          <EuroSignalBars amount={expectedGain} />
+        </div>
         
         <p className="text-gray-600 text-xs line-clamp-2 mb-4">{summary}</p>
         
@@ -73,17 +76,12 @@ export const MarketIntelligenceCard = ({
           <Badge className={getDepartmentColor(department)}>
             <span className="text-xs">{department}</span>
           </Badge>
-          <EuroSignalBars amount={expectedGain} />
         </div>
 
-        <div className="flex justify-between items-center text-xs text-gray-500">
+        <div className="flex items-center text-xs text-gray-500">
           <div className="flex items-center gap-1">
             <Clock className="w-3 h-3" />
             <span>{timeline}</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <BarChart className="w-3 h-3" />
-            <span>Implementation Effort</span>
           </div>
         </div>
 

@@ -1,4 +1,4 @@
-import { Bell, TrendingUp, AlertCircle, ArrowRight } from 'lucide-react';
+import { Bell, MessageSquare, TrendingUp, AlertCircle, ArrowRight } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -188,19 +188,6 @@ const notifications: Notification[] = [
 export const NotificationPanel = () => {
   const [selectedNotification, setSelectedNotification] = useState<Notification | null>(null);
 
-  const getPriorityColor = (priority: string) => {
-    switch (priority) {
-      case 'high':
-        return 'bg-red-500';
-      case 'medium':
-        return 'bg-yellow-500';
-      case 'low':
-        return 'bg-blue-500';
-      default:
-        return 'bg-gray-500';
-    }
-  };
-
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'new':
@@ -225,10 +212,10 @@ export const NotificationPanel = () => {
 
   return (
     <>
-      <Card className="w-[320px] shadow-lg">
+      <Card className="w-full shadow-lg">
         <div className="p-4 border-b flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Bell className="w-5 h-5 text-primary" />
+            <Bell className="w-5 h-5 text-secondary" />
             <h2 className="font-semibold text-lg">Market Signals</h2>
           </div>
           <span className="text-xs text-gray-500">Last 4 days</span>
@@ -242,7 +229,6 @@ export const NotificationPanel = () => {
                 className="p-3 hover:bg-gray-50 rounded-lg transition-colors cursor-pointer group"
               >
                 <div className="flex items-start gap-3">
-                  <div className={`w-2 h-2 rounded-full mt-2 ${getPriorityColor(notification.priority)}`} />
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-1">
                       <div className="flex items-center gap-2">
@@ -258,8 +244,8 @@ export const NotificationPanel = () => {
                         onClick={() => setSelectedNotification(notification)}
                         className="text-primary hover:text-primary-dark flex items-center gap-1 group-hover:underline"
                       >
-                        {notification.action.text}
-                        <ArrowRight className="w-3 h-3" />
+                        <MessageSquare className="w-3 h-3" />
+                        AI Assistant
                       </button>
                     </div>
                   </div>

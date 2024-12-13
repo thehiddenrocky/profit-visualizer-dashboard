@@ -60,6 +60,9 @@ export const MarketIntelligenceCard = ({
             <Badge className={getDepartmentColor(department)}>
               {department}
             </Badge>
+            <span className="font-medium text-green-600 text-sm">
+              €{(expectedGain/1000).toFixed(1)}K/mo ▲
+            </span>
           </div>
           
           <div className="flex items-center gap-2 text-sm text-gray-600 mb-4">

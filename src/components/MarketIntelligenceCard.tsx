@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Clock, BarChart, CheckCircle, Calendar, AlertTriangle } from 'lucide-react';
+import { Clock, BarChart, CheckCircle, Calendar, AlertTriangle, MessageSquare } from 'lucide-react';
 import { ChatInterface } from './chat/ChatInterface';
 import { EuroSignalBars } from './market-intelligence/EuroSignalBars';
 import { CardHeader } from './market-intelligence/CardHeader';
@@ -133,6 +133,16 @@ export const MarketIntelligenceCard = ({
             </div>
           </div>
         )}
+
+        <div className="mt-4 pt-4 border-t flex items-center">
+          <button 
+            onClick={() => setShowAlfred(true)}
+            className="flex items-center gap-2 text-primary hover:text-primary-dark transition-colors"
+          >
+            <MessageSquare className="w-4 h-4" />
+            <span className="text-xs">Talk to Alfred</span>
+          </button>
+        </div>
       </Card>
       
       {showAlfred && (

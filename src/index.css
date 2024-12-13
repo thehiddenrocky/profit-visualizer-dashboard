@@ -99,22 +99,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-/* Scrollbar Styles */
-.overflow-x-auto {
-  scrollbar-width: thin;
-  scrollbar-gutter: stable;
-}
-
-.overflow-x-auto::-webkit-scrollbar {
-  height: 8px;
-}
-
-.overflow-x-auto::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.overflow-x-auto::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
-}

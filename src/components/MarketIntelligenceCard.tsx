@@ -4,7 +4,6 @@ import { Badge } from "@/components/ui/badge";
 import { Clock, CheckCircle, Calendar, AlertTriangle, MessageSquare } from 'lucide-react';
 import { ChatInterface } from './chat/ChatInterface';
 import { EuroSignalBars } from './market-intelligence/EuroSignalBars';
-import { CardHeader } from './market-intelligence/CardHeader';
 
 interface MarketIntelligenceCardProps {
   title: string;

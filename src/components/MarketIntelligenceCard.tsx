@@ -2,7 +2,18 @@ import { useState } from 'react';
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { TrendingUp, Clock, ChevronDown, ChevronUp, MessageSquare } from 'lucide-react';
+import { 
+  TrendingUp, 
+  Clock, 
+  ChevronDown, 
+  ChevronUp, 
+  MessageSquare, 
+  Euro,
+  AlertTriangle,
+  BarChart,
+  Calendar,
+  CheckCircle
+} from 'lucide-react';
 import { cn } from "@/lib/utils";
 import { ChatInterface } from './chat/ChatInterface';
 
@@ -61,15 +72,26 @@ export const MarketIntelligenceCard = ({
     }
   };
 
-  const getSuggestedQuestions = () => [
-    `How do I implement the ${title.toLowerCase()}?`,
-    `What's the detailed ROI calculation for this action?`,
-    `Can you break down the implementation steps?`,
-    `What are the main risks to consider?`
-  ];
+  const getGainIndicator = (gain: number) => {
+    if (gain > 50000) return Array(5).fill(<Euro className="w-4 h-4 text-green-600" />);
+    if (gain > 20000) return Array(4).fill(<Euro className="w-4 h-4 text-green-600" />);
+    if (gain > 10000) return Array(3).fill(<Euro className="w-4 h-4 text-green-600" />);
+    if (gain > 5000) return Array(2).fill(<Euro className="w-4 h-4 text-green-600" />);
+    return [<Euro className="w-4 h-4 text-green-600" />];
+  };
 
-  const getInitialMessage = () => 
-    `Hi! I noticed a quick win opportunity - ${title.toLowerCase()} could generate €${expectedGain} in additional monthly revenue. Would you like to know more?`;
+  const getRiskIndicator = (risk: string) => {
+    switch (risk.toLowerCase()) {
+      case "high":
+        return Array(3).fill(<AlertTriangle className="w-4 h-4 text-red-600" />);
+      case "medium":
+        return Array(2).fill(<AlertTriangle className="w-4 h-4 text-yellow-600" />);
+      case "low":
+        return [<AlertTriangle className="w-4 h-4 text-green-600" />];
+      default:
+        return [<AlertTriangle className="w-4 h-4 text-gray-600" />];
+    }
+  };
 
   return (
     <>
@@ -94,9 +116,10 @@ export const MarketIntelligenceCard = ({
             <Badge className={getDepartmentColor(department)}>
               <span className="text-xs">{department}</span>
             </Badge>
-            <div className="flex items-center gap-2">
-              <TrendingUp className="w-4 h-4 text-green-600" />
-              <span className="font-medium text-green-600">€{expectedGain}/month</span>
+            <div className="flex items-center gap-1">
+              {getGainIndicator(expectedGain).map((icon, index) => (
+                <span key={index}>{icon}</span>
+              ))}
             </div>
           </div>
 
@@ -105,20 +128,29 @@ export const MarketIntelligenceCard = ({
               <Clock className="w-3 h-3" />
               <span>{timeline}</span>
             </div>
-            <span>Cost: €{implementationCost}</span>
+            <div className="flex items-center gap-1">
+              <BarChart className="w-3 h-3" />
+              <span>Implementation Effort</span>
+            </div>
           </div>
 
           {isExpanded && (
             <div className="mt-4 animate-fade-in">
               <div className="border-t pt-4">
-                <h4 className="font-semibold mb-2">Evidence:</h4>
+                <div className="flex items-center gap-2 mb-2">
+                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <h4 className="font-semibold">Evidence:</h4>
+                </div>
                 <ul className="list-disc list-inside text-sm text-gray-600 mb-4">
                   {evidence.map((item, index) => (
                     <li key={index} className="mb-1">{item}</li>
                   ))}
                 </ul>
 
-                <h4 className="font-semibold mb-2">Implementation Steps:</h4>
+                <div className="flex items-center gap-2 mb-2">
+                  <Calendar className="w-4 h-4 text-blue-600" />
+                  <h4 className="font-semibold">Implementation Steps:</h4>
+                </div>
                 <ol className="list-decimal list-inside text-sm text-gray-600 mb-4">
                   {implementationSteps.map((step, index) => (
                     <li key={index} className="mb-1">{step}</li>
@@ -126,9 +158,14 @@ export const MarketIntelligenceCard = ({
                 </ol>
 
                 <div className="flex justify-between items-center mb-4">
-                  <span className="text-sm">
-                    <strong>Risk Level:</strong> {riskLevel}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-semibold">Risk Level:</span>
+                    <div className="flex gap-1">
+                      {getRiskIndicator(riskLevel).map((icon, index) => (
+                        <span key={index}>{icon}</span>
+                      ))}
+                    </div>
+                  </div>
                   <Button
                     onClick={(e) => {
                       e.stopPropagation();

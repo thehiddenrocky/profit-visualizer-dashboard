@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, ChevronUp, MessageSquare, TrendingUp } from 'lucide-react';
+import { TrendingUp, Clock, ChevronDown, ChevronUp, MessageSquare } from 'lucide-react';
 import { cn } from "@/lib/utils";
 import { ChatInterface } from './chat/ChatInterface';
 
@@ -82,24 +82,29 @@ export const MarketIntelligenceCard = ({
       >
         <div className="p-4">
           <div className="flex justify-between items-start mb-3">
-            <h3 className="font-semibold text-lg text-secondary">{title}</h3>
+            <h3 className="font-semibold text-sm text-secondary">{title}</h3>
             <Badge variant="outline" className={getCostColor(costLevel)}>
               {costLevel} Cost
             </Badge>
           </div>
           
-          <p className="text-gray-600 text-sm mb-3 line-clamp-2">{summary}</p>
+          <p className="text-gray-600 text-xs line-clamp-2 mb-3">{summary}</p>
           
           <div className="flex justify-between items-center mb-3">
-            <Badge className={getDepartmentColor(department)}>{department}</Badge>
-            <div className="flex items-center gap-2 text-primary">
-              <TrendingUp className="w-4 h-4" />
-              <span className="font-medium">€{expectedGain}/month</span>
+            <Badge className={getDepartmentColor(department)}>
+              <span className="text-xs">{department}</span>
+            </Badge>
+            <div className="flex items-center gap-2">
+              <TrendingUp className="w-4 h-4 text-green-600" />
+              <span className="font-medium text-green-600">€{expectedGain}/month</span>
             </div>
           </div>
 
-          <div className="flex justify-between items-center text-sm text-gray-500">
-            <span>Timeline: {timeline}</span>
+          <div className="flex justify-between items-center text-xs text-gray-500">
+            <div className="flex items-center gap-1">
+              <Clock className="w-3 h-3" />
+              <span>{timeline}</span>
+            </div>
             <span>Cost: €{implementationCost}</span>
           </div>
 
@@ -155,7 +160,7 @@ export const MarketIntelligenceCard = ({
             }}
             className="w-full flex justify-center items-center mt-4 text-gray-500 hover:text-gray-700"
           >
-            {isExpanded ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
+            {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
           </button>
         </div>
       </Card>
@@ -164,6 +169,7 @@ export const MarketIntelligenceCard = ({
           initialMessage={getInitialMessage()}
           suggestedQuestions={getSuggestedQuestions()}
           isOpen={showAlfred}
+          onClose={() => setShowAlfred(false)}
         />
       )}
     </>

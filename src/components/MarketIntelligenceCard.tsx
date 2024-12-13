@@ -37,14 +37,7 @@ export const MarketIntelligenceCard = ({
   const [showAlfred, setShowAlfred] = useState(false);
 
   const getDepartmentColor = (dept: string) => {
-    switch (dept.toLowerCase()) {
-      case "marketing":
-        return "bg-purple-100 text-purple-800";
-      case "customer service":
-        return "bg-blue-100 text-blue-800";
-      default:
-        return "bg-gray-100 text-gray-800";
-    }
+    return "bg-gray-100 text-gray-600";
   };
 
   const getInitialMessage = () => 

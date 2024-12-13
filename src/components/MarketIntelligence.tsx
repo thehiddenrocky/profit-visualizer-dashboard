@@ -1,3 +1,5 @@
+import { useRef } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { MarketIntelligenceHeader } from "./market-intelligence/MarketIntelligenceHeader";
 import { LowCostActions } from "./market-intelligence/LowCostActions";
 import { MediumCostActions } from "./market-intelligence/MediumCostActions";

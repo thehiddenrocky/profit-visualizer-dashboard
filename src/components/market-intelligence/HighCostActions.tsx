@@ -1,8 +1,10 @@
 import { MarketIntelligenceCard } from "../MarketIntelligenceCard";
 import { Badge } from "../ui/badge";
-import { TrendingUp } from "lucide-react";
+import { TrendingUp, ChevronLeft, ChevronRight } from "lucide-react";
+import { useRef } from "react";
 
 export const HighCostActions = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
   const highCostData = [
     {
       title: "Deploy Regional Fiber Network Expansion",
@@ -106,6 +108,24 @@ export const HighCostActions = () => {
     },
   ];
 
+  const handleScrollLeft = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({
+        left: -containerRef.current.offsetWidth,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const handleScrollRight = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({
+        left: containerRef.current.offsetWidth,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className="mb-12">
       <div className="flex items-center gap-2 mb-6">
@@ -117,10 +137,36 @@ export const HighCostActions = () => {
           Expected Monthly Profit Increase
         </span>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-        {highCostData.map((data, index) => (
-          <MarketIntelligenceCard key={index} {...data} />
-        ))}
+      
+      <div className="relative group">
+        <div 
+          ref={containerRef}
+          className="flex gap-4 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
+        >
+          {highCostData.map((data, index) => (
+            <div key={index} className="flex-none w-[350px]">
+              <MarketIntelligenceCard {...data} />
+            </div>
+          ))}
+        </div>
+
+        {highCostData.length > 3 && (
+          <>
+            <button 
+              className="absolute left-0 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/60 p-4 rounded-r-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 h-[calc(100%-2rem)]"
+              onClick={handleScrollLeft}
+            >
+              <ChevronLeft className="h-6 w-6 text-white" />
+            </button>
+
+            <button 
+              className="absolute right-0 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/60 p-4 rounded-l-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 h-[calc(100%-2rem)]"
+              onClick={handleScrollRight}
+            >
+              <ChevronRight className="h-6 w-6 text-white" />
+            </button>
+          </>
+        )}
       </div>
     </div>
   );

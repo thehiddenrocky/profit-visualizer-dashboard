@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Clock, CheckCircle, AlertTriangle, MessageSquare, TrendingUp } from 'lucide-react';
+import { CheckCircle, AlertTriangle, MessageSquare, TrendingUp } from 'lucide-react';
 import { ChatInterface } from './chat/ChatInterface';
 
 interface MarketIntelligenceCardProps {
@@ -9,8 +9,6 @@ interface MarketIntelligenceCardProps {
   summary: string;
   expectedGain: number;
   implementationCost: number;
-  timeline: string;
-  costLevel: 'Low' | 'Mid' | 'High';
   department: string;
   evidence: string[];
   implementationSteps: string[];
@@ -23,8 +21,6 @@ export const MarketIntelligenceCard = ({
   title,
   summary,
   expectedGain,
-  timeline,
-  costLevel,
   department,
   evidence,
   implementationSteps,
@@ -69,13 +65,6 @@ export const MarketIntelligenceCard = ({
           <div className="flex items-center gap-2 text-sm text-gray-600 mb-4">
             <TrendingUp className="w-4 h-4 text-gray-500" />
             <span className="font-medium">{signalMetric} • {signalType}</span>
-          </div>
-        </div>
-
-        <div className="flex items-center text-xs text-gray-500 mb-4">
-          <div className="flex items-center gap-1">
-            <Clock className="w-3 h-3" />
-            <span>{timeline}</span>
           </div>
         </div>
 

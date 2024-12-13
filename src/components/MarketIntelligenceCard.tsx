@@ -63,17 +63,13 @@ export const MarketIntelligenceCard = ({
       <Card className="w-full p-4">
         <div className="flex flex-col gap-2">
           <div className="flex justify-between items-start">
-            <CardHeader
-              title={title}
-              costLevel={costLevel}
-              onShowMore={() => setIsExpanded(!isExpanded)}
-              onTalkToAlfred={() => setShowAlfred(true)}
-            />
-            <div className="flex flex-col items-end gap-2">
-              <EuroSignalBars amount={expectedGain} />
-              <Badge className={`${getDepartmentColor(department)} mt-1`}>
-                <span className="text-xs">{department}</span>
-              </Badge>
+            <div className="flex items-start gap-2">
+              <div className="flex flex-col items-end gap-2">
+                <EuroSignalBars amount={expectedGain} />
+                <Badge className={`${getDepartmentColor(department)} mt-1`}>
+                  <span className="text-xs">{department}</span>
+                </Badge>
+              </div>
             </div>
           </div>
           

@@ -9,7 +9,6 @@ interface CardHeaderProps {
 }
 
 export const CardHeader = ({ 
-  title, 
   costLevel, 
   onShowMore,
   onTalkToAlfred 
@@ -30,9 +29,6 @@ export const CardHeader = ({
   return (
     <div className="flex items-start justify-between mb-4">
       <div className="flex items-start gap-2">
-        <div>
-          <h3 className="font-semibold text-sm text-secondary">{title}</h3>
-        </div>
       </div>
     </div>
   );

@@ -44,29 +44,21 @@ export const MarketIntelligenceCard = ({
     `What are the main risks to consider?`
   ];
 
-  // Format summary to signal format
-  const formatSignal = (text: string) => {
-    const parts = text.split('•').map(part => part.trim());
-    return parts.length > 1 ? parts : [text, 'Market Update'];
-  };
-
-  const [signalMetric, signalType] = formatSignal(summary);
-
   return (
     <>
-      <Card className="w-full p-4">
+      <Card className="w-full p-4 bg-gray-50">
         <div className="flex flex-col gap-2">
           <div className="flex justify-between items-start">
             <Badge className={getDepartmentColor(department)}>
               {department}
             </Badge>
-            <span className="font-medium text-green-600 text-sm">
+            <span className="font-medium text-secondary text-sm">
               €{(expectedGain/1000).toFixed(1)}K/mo ▲
             </span>
           </div>
           
           <div className="flex items-center gap-2 text-sm text-gray-600 mb-4">
-            <span className="font-medium">{signalMetric} • {signalType}</span>
+            <span className="font-medium">{summary}</span>
           </div>
         </div>
 

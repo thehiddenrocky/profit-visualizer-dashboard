@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Clock, CheckCircle, Calendar, AlertTriangle, MessageSquare } from 'lucide-react';
+import { Clock, CheckCircle, Calendar, AlertTriangle, MessageSquare, FileText } from 'lucide-react';
 import { ChatInterface } from './chat/ChatInterface';
 import { EuroSignalBars } from './market-intelligence/EuroSignalBars';
 import { CardHeader } from './market-intelligence/CardHeader';
@@ -78,11 +78,20 @@ export const MarketIntelligenceCard = ({
           </Badge>
         </div>
 
-        <div className="flex items-center text-xs text-gray-500">
+        <div className="flex items-center text-xs text-gray-500 mb-4">
           <div className="flex items-center gap-1">
             <Clock className="w-3 h-3" />
             <span>{timeline}</span>
           </div>
+        </div>
+
+        <div className="mb-4">
+          <h4 className="text-sm font-semibold mb-2">Implementation Steps:</h4>
+          <ol className="list-decimal list-inside text-sm text-gray-600">
+            {implementationSteps.map((step, index) => (
+              <li key={index} className="mb-1">{step}</li>
+            ))}
+          </ol>
         </div>
 
         {isExpanded && (
@@ -98,18 +107,6 @@ export const MarketIntelligenceCard = ({
                     <li key={index} className="mb-1">{item}</li>
                   ))}
                 </ul>
-              </div>
-
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <Calendar className="w-4 h-4 text-blue-600" />
-                  <h4 className="font-semibold">Implementation Steps:</h4>
-                </div>
-                <ol className="list-decimal list-inside text-sm text-gray-600">
-                  {implementationSteps.map((step, index) => (
-                    <li key={index} className="mb-1">{step}</li>
-                  ))}
-                </ol>
               </div>
 
               <div>
@@ -132,13 +129,20 @@ export const MarketIntelligenceCard = ({
           </div>
         )}
 
-        <div className="mt-4 pt-4 border-t flex items-center">
+        <div className="mt-4 pt-4 border-t flex items-center justify-between">
           <button 
             onClick={() => setShowAlfred(true)}
             className="flex items-center gap-2 text-primary hover:text-primary-dark transition-colors"
           >
             <MessageSquare className="w-4 h-4" />
             <span className="text-xs">Talk to Alfred</span>
+          </button>
+          <button 
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="flex items-center gap-2 text-primary hover:text-primary-dark transition-colors"
+          >
+            <FileText className="w-4 h-4" />
+            <span className="text-xs">View report</span>
           </button>
         </div>
       </Card>

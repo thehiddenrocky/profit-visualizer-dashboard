@@ -52,16 +52,14 @@ export const MarketIntelligenceCard = ({
       <Card className="w-full p-4">
         <div className="flex flex-col gap-2">
           <div className="flex justify-between items-start">
-            <div className="flex items-start gap-2">
-              <Badge className={getDepartmentColor(department)}>
-                <span className="text-xs">{department}</span>
-              </Badge>
-            </div>
+            <Badge className={getDepartmentColor(department)}>
+              {department}
+            </Badge>
           </div>
           
-          <div className="flex justify-between items-center text-sm text-gray-600 mb-4">
-            <span className="font-medium">{summary}</span>
-          </div>
+          <p className="text-sm text-gray-600 mb-4">
+            {summary}
+          </p>
         </div>
 
         <div className="flex items-center text-xs text-gray-500 mb-4">

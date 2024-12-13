@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle, AlertTriangle, MessageSquare, TrendingUp } from 'lucide-react';
+import { CheckCircle, AlertTriangle, MessageSquare, FileText, TrendingUp } from 'lucide-react';
 import { ChatInterface } from './chat/ChatInterface';
 
 interface MarketIntelligenceCardProps {
@@ -122,13 +122,14 @@ export const MarketIntelligenceCard = ({
             className="flex items-center gap-2 text-primary hover:text-primary-dark transition-colors"
           >
             <MessageSquare className="w-4 h-4" />
-            <span className="text-xs">Talk to Alfred</span>
+            <span className="text-xs">AI Assistant</span>
           </button>
           <button 
             onClick={() => setIsExpanded(!isExpanded)}
             className="flex items-center gap-2 text-primary hover:text-primary-dark transition-colors"
           >
-            <span className="text-xs">View report</span>
+            <FileText className="w-4 h-4" />
+            <span className="text-xs">Report</span>
           </button>
         </div>
       </Card>

@@ -1,4 +1,4 @@
-import { Bell, MessageSquare, TrendingUp, AlertCircle, ArrowRight } from 'lucide-react';
+import { Bell, MessageSquare, TrendingUp, AlertCircle } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -188,17 +188,6 @@ const notifications: Notification[] = [
 export const NotificationPanel = () => {
   const [selectedNotification, setSelectedNotification] = useState<Notification | null>(null);
 
-  const getStatusBadge = (status: string) => {
-    switch (status) {
-      case 'new':
-        return <Badge className="bg-red-100 text-red-800 text-xs">New</Badge>;
-      case 'trending':
-        return <Badge className="bg-yellow-100 text-yellow-800 text-xs">Trending</Badge>;
-      default:
-        return null;
-    }
-  };
-
   const getIcon = (iconType: string) => {
     switch (iconType) {
       case 'trend':
@@ -212,7 +201,7 @@ export const NotificationPanel = () => {
 
   return (
     <>
-      <Card className="w-full shadow-lg">
+      <Card className="w-[380px] shadow-lg h-[calc(100vh-100px)]">
         <div className="p-4 border-b flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Bell className="w-5 h-5 text-secondary" />
@@ -221,7 +210,7 @@ export const NotificationPanel = () => {
           <span className="text-xs text-gray-500">Last 4 days</span>
         </div>
 
-        <ScrollArea className="h-[400px]">
+        <ScrollArea className="h-[calc(100vh-160px)]">
           <div className="p-2">
             {notifications.map((notification) => (
               <div
@@ -235,7 +224,6 @@ export const NotificationPanel = () => {
                         {getIcon(notification.icon)}
                         <h3 className="font-medium text-gray-900 text-sm">{notification.title}</h3>
                       </div>
-                      {getStatusBadge(notification.status)}
                     </div>
                     <p className="text-xs text-gray-600 mb-2">{notification.description}</p>
                     <div className="flex items-center justify-between text-xs">

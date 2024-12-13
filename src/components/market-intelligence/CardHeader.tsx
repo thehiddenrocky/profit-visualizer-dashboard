@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { MessageSquare, Info } from 'lucide-react';
+import { Info } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
 interface CardHeaderProps {
@@ -31,14 +31,6 @@ export const CardHeader = ({
   return (
     <div className="flex items-start justify-between mb-4">
       <div className="flex items-start gap-2">
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={onTalkToAlfred}
-          className="mt-1"
-        >
-          <MessageSquare className="h-4 w-4 text-primary" />
-        </Button>
         <div>
           <h3 className="font-semibold text-sm text-secondary">{title}</h3>
           <Badge variant="outline" className={getCostColor(costLevel)}>

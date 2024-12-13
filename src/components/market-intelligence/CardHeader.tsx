@@ -1,5 +1,4 @@
 import { Badge } from "@/components/ui/badge";
-import { FileText } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
 interface CardHeaderProps {
@@ -35,14 +34,6 @@ export const CardHeader = ({
           <h3 className="font-semibold text-sm text-secondary">{title}</h3>
         </div>
       </div>
-      <Button
-        variant="ghost"
-        size="icon"
-        onClick={onShowMore}
-        className="mt-1"
-      >
-        <FileText className="h-4 w-4 text-gray-500" />
-      </Button>
     </div>
   );
 };

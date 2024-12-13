@@ -18,7 +18,7 @@ interface MarketIntelligenceCardProps {
   implementationSteps: string[];
   riskLevel: string;
   dataSources: string[];
-  onTalkToAlfred: () => void;
+  onTalkToAlfred?: () => void; // Made optional with '?'
 }
 
 export const MarketIntelligenceCard = ({

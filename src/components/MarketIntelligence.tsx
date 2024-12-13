@@ -3,203 +3,403 @@ import { MarketIntelligenceGrid } from "./market-intelligence/MarketIntelligence
 
 const marketData = [
   {
-    title: "Strengthen Local Market Presence",
-    summary: "Reinforce local brand perception and regional presence to retain customers",
-    expectedGain: 8000,
-    implementationCost: 1000,
-    timeline: "2-4 weeks",
-    costLevel: "Low" as const,
-    department: "Marketing & Sales",
-    evidence: [
-      "Strong regional background of competitors",
-      "Local trust as key differentiator",
-      "Need to avoid competitive position deterioration"
-    ],
-    implementationSteps: [
-      "Update marketing materials for local focus",
-      "Launch targeted local campaigns",
-      "Partner with local businesses"
-    ],
-    riskLevel: "Low",
-    dataSources: [
-      "Regional customer surveys",
-      "Local competitor promotions",
-      "Community forum analysis"
-    ]
-  },
-  {
-    title: "Develop Simple, Flexible Pricing",
-    summary: "Introduce transparent pricing to retain price-sensitive customers",
-    expectedGain: 10000,
-    implementationCost: 1000,
+    title: "Responding to Competitor Price Increase",
+    summary: "DNA raised fiber prices by 5% in Helsinki. Opportunity to align pricing closer to market levels.",
+    expectedGain: 6000,
+    implementationCost: 500,
     timeline: "1-2 weeks",
     costLevel: "Low" as const,
     department: "Pricing Strategy",
     evidence: [
-      "Youth segment's price sensitivity",
-      "MNP impact on customer retention",
-      "Aggressive competitor pricing"
+      "DNA's website shows 5% price increase",
+      "Lounea packages 10% below market average",
+      "No negative social media sentiment"
     ],
     implementationSteps: [
-      "Update pricing system tiers",
-      "Update website communication",
-      "Train customer service team"
+      "Analyze current pricing structure",
+      "Update regional pricing",
+      "Communicate changes to customers"
     ],
     riskLevel: "Low",
     dataSources: [
-      "Price comparison sites",
-      "Competitor pricing pages",
-      "MNP statistics"
+      "DNA website",
+      "Market price analysis",
+      "Social media monitoring"
     ]
   },
   {
-    title: "Broadband Bundles & Add-ons",
-    summary: "Increase ARPU through bundled services and value-adds",
-    expectedGain: 12000,
-    implementationCost: 2000,
-    timeline: "2-4 weeks",
-    costLevel: "Mid" as const,
-    department: "Product Development",
-    evidence: [
-      "Media companies entering market",
-      "DigiTV opportunities identified",
-      "IT firms market entry"
-    ],
-    implementationSteps: [
-      "Identify compatible services",
-      "Create bundle offerings",
-      "Run pilot campaign"
-    ],
-    riskLevel: "Medium",
-    dataSources: [
-      "Partner service catalogs",
-      "Customer surveys",
-      "Bundle comparisons"
-    ]
-  },
-  {
-    title: "Strategic Media & IT Alliances",
-    summary: "Partner with media/IT firms for end-to-end solutions",
-    expectedGain: 15000,
-    implementationCost: 3000,
-    timeline: "4-6 weeks",
-    costLevel: "High" as const,
-    department: "Partnerships",
-    evidence: [
-      "IT companies market entry",
-      "Need for integrated solutions",
-      "Future trend indicators"
-    ],
-    implementationSteps: [
-      "Identify key partners",
-      "Negotiate partnership terms",
-      "Train sales team"
-    ],
-    riskLevel: "Medium",
-    dataSources: [
-      "Competitor press releases",
-      "Industry reports",
-      "Customer feedback"
-    ]
-  },
-  {
-    title: "Quality Over Price Strategy",
-    summary: "Differentiate through reliability and service quality",
-    expectedGain: 7000,
-    implementationCost: 1500,
+    title: "Leveraging Fiber-Related SEO Keywords",
+    summary: "Incorporate high-volume fiber internet keywords to boost organic traffic",
+    expectedGain: 7500,
+    implementationCost: 1000,
     timeline: "2-3 weeks",
     costLevel: "Low" as const,
-    department: "Customer Experience",
+    department: "Marketing",
     evidence: [
-      "Service commoditization trends",
-      "Quality importance rising",
-      "Trust in reliable service"
+      "High search volume for target keywords",
+      "Competitors ranking well for these terms",
+      "Current pages missing key phrases"
     ],
     implementationSteps: [
-      "Highlight quality metrics",
-      "Roll out quality guarantee",
-      "Enhance support training"
+      "Conduct keyword research",
+      "Update website content",
+      "Monitor rankings"
     ],
     riskLevel: "Low",
     dataSources: [
-      "Network performance logs",
-      "Satisfaction surveys",
-      "Industry benchmarks"
+      "SEMRush data",
+      "Competitor analysis",
+      "Current website audit"
     ]
   },
   {
-    title: "Match DNA Price Increase",
-    summary: "Opportunity to raise fiber prices in Helsinki region",
-    expectedGain: 6000,
+    title: "Highlighting Reliability Over Competitors' Downtime",
+    summary: "Emphasize network reliability and uptime guarantees",
+    expectedGain: 3000,
     implementationCost: 500,
     timeline: "1 week",
     costLevel: "Low" as const,
     department: "Marketing",
     evidence: [
-      "DNA raised prices by 5% (Source: DNA website)",
-      "No negative social media sentiment",
-      "Current prices 10% below market"
+      "Competitor outages reported on forums",
+      "Less than 0.1% downtime last quarter",
+      "Customer concerns about stability"
     ],
     implementationSteps: [
-      "Update pricing system",
-      "Prepare customer communications",
-      "Brief customer service team"
+      "Create uptime guarantee badge",
+      "Update marketing materials",
+      "Train support team"
     ],
     riskLevel: "Low",
     dataSources: [
-      "Competitor websites",
-      "Social media analysis",
-      "Price comparison sites"
+      "Network performance reports",
+      "Public complaint forums",
+      "Customer feedback"
     ]
   },
   {
-    title: "Bundle Security Services",
-    summary: "New opportunity in enterprise segment",
-    expectedGain: 8000,
-    implementationCost: 2000,
+    title: "Showcasing Price Stability Amid Competitor Price Fluctuations",
+    summary: "Position Lounea as consistently stable and transparent to reassure customers.",
+    expectedGain: 3500,
+    implementationCost: 500,
+    timeline: "1-2 weeks",
+    costLevel: "Low" as const,
+    department: "Marketing",
+    evidence: [
+      "Competitor press releases reveal frequent tariff adjustments",
+      "No negative reaction to stable pricing strategies",
+      "Customer interest in price stability"
+    ],
+    implementationSteps: [
+      "Add note on pricing pages about stability",
+      "Communicate with customers about pricing policies",
+      "Monitor customer feedback"
+    ],
+    riskLevel: "Low",
+    dataSources: [
+      "Competitor press releases",
+      "Customer feedback",
+      "Market analysis"
+    ]
+  },
+  {
+    title: "Improving Organic Visibility with Competitor Keyword Gaps",
+    summary: "Add city-targeted keywords to capture regionally searching prospects.",
+    expectedGain: 3000,
+    implementationCost: 500,
     timeline: "2 weeks",
-    costLevel: "Mid" as const,
-    department: "Product Development",
+    costLevel: "Low" as const,
+    department: "SEO",
     evidence: [
-      "70% of enterprise customers request security",
-      "Competitors charging premium for similar bundles",
-      "In-house security expertise available"
+      "Competitor sites rank for city-specific speed terms",
+      "Lounea's pages omit these keywords",
+      "Customer interest in local services"
     ],
     implementationSteps: [
-      "Package existing security services",
-      "Create enterprise bundle pricing",
-      "Train sales team on new offerings"
+      "Research city-specific keywords",
+      "Update product pages with localized content",
+      "Monitor search performance"
     ],
     riskLevel: "Low",
     dataSources: [
-      "Customer surveys",
-      "Sales team feedback",
-      "Market research reports"
+      "SEO analysis tools",
+      "Competitor keyword research",
+      "Customer surveys"
     ]
   },
   {
-    title: "5G Network Expansion",
-    summary: "High demand in suburban areas",
-    expectedGain: 15000,
-    implementationCost: 50000,
-    timeline: "3 months",
-    costLevel: "High" as const,
-    department: "Infrastructure",
+    title: "Positioning Against Long-Term Contracts of Competitors",
+    summary: "Highlight contract flexibility to attract customers hesitant to commit long-term.",
+    expectedGain: 3000,
+    implementationCost: 500,
+    timeline: "1-2 weeks",
+    costLevel: "Low" as const,
+    department: "Marketing",
     evidence: [
-      "200% increase in data usage",
-      "Competitor coverage gaps identified",
-      "Strong customer demand signals"
+      "Competitor contract terms discussed negatively on social media",
+      "Lounea offers shorter commitments",
+      "Customer interest in flexible options"
     ],
     implementationSteps: [
-      "Site surveys and planning",
-      "Equipment procurement",
-      "Installation and testing"
+      "Add comparison graphic showing Lounea's terms vs. competitors",
+      "Update marketing materials",
+      "Train sales team on messaging"
     ],
-    riskLevel: "Medium",
+    riskLevel: "Low",
     dataSources: [
-      "Network usage data",
-      "Coverage analysis",
-      "Customer requests"
+      "Social media analysis",
+      "Competitor contract reviews",
+      "Customer feedback"
+    ]
+  },
+  {
+    title: "Using Public Speed Test Awards to Stand Out",
+    summary: "Showcase superior speed test results from independent sources.",
+    expectedGain: 2250,
+    implementationCost: 500,
+    timeline: "1 week",
+    costLevel: "Low" as const,
+    department: "Marketing",
+    evidence: [
+      "Ookla speedtest rankings",
+      "Outperforming competitors in regions",
+      "Customer interest in verified speeds"
+    ],
+    implementationSteps: [
+      "Collect speedtest data",
+      "Create performance badges",
+      "Update website"
+    ],
+    riskLevel: "Low",
+    dataSources: [
+      "Ookla data",
+      "Regional speed tests",
+      "Competitor comparisons"
+    ]
+  },
+  {
+    title: "Aligning with Government Broadband Targets",
+    summary: "Highlight compliance with national broadband goals.",
+    expectedGain: 2250,
+    implementationCost: 500,
+    timeline: "1-2 weeks",
+    costLevel: "Low" as const,
+    department: "Compliance",
+    evidence: [
+      "Government broadband targets",
+      "Competitor gap in messaging",
+      "Customer interest in standards"
+    ],
+    implementationSteps: [
+      "Review compliance status",
+      "Create messaging",
+      "Update service pages"
+    ],
+    riskLevel: "Low",
+    dataSources: [
+      "Government documents",
+      "Compliance reports",
+      "Market analysis"
+    ]
+  },
+  {
+    title: "Adding a Visual 'Cost Comparison' Chart Using Public Price Data",
+    summary: "Highlight current affordability and encourage sign-ups with a comparison chart.",
+    expectedGain: 3500,
+    implementationCost: 500,
+    timeline: "1-2 weeks",
+    costLevel: "Low" as const,
+    department: "Marketing",
+    evidence: [
+      "Aggregator sites show Lounea's pricing under market",
+      "Competitors' rates are easily accessed",
+      "Customer interest in price transparency"
+    ],
+    implementationSteps: [
+      "Create a market price comparison chart",
+      "Publish on the website",
+      "Promote through marketing channels"
+    ],
+    riskLevel: "Low",
+    dataSources: [
+      "Aggregator sites",
+      "Market analysis",
+      "Customer feedback"
+    ]
+  },
+  {
+    title: "Promoting Stability When Competitors Are Criticized for Hidden Fees",
+    summary: "Stress 'No Hidden Fees' aligns with transparency desires noted in user discussions.",
+    expectedGain: 3000,
+    implementationCost: 500,
+    timeline: "1 week",
+    costLevel: "Low" as const,
+    department: "Marketing",
+    evidence: [
+      "Forum complaints indicate hidden surcharges on competitor bills",
+      "Customer interest in transparent pricing",
+      "Positive feedback on clear pricing"
+    ],
+    implementationSteps: [
+      "Add a prominent 'No Hidden Fees' statement",
+      "Update marketing materials",
+      "Monitor customer feedback"
+    ],
+    riskLevel: "Low",
+    dataSources: [
+      "Forum analysis",
+      "Customer surveys",
+      "Competitor reviews"
+    ]
+  },
+  {
+    title: "Showcasing Rapid Installation Times vs. Competitors",
+    summary: "Highlight quicker setup to capture impatient customers.",
+    expectedGain: 3000,
+    implementationCost: 500,
+    timeline: "1 week",
+    costLevel: "Low" as const,
+    department: "Marketing",
+    evidence: [
+      "Competitor installations taking weeks",
+      "Lounea's internal data suggests shorter setup periods",
+      "Customer interest in quick installations"
+    ],
+    implementationSteps: [
+      "Add note on order pages about installation times",
+      "Update marketing materials",
+      "Train sales team on messaging"
+    ],
+    riskLevel: "Low",
+    dataSources: [
+      "Customer feedback",
+      "Internal data",
+      "Competitor analysis"
+    ]
+  },
+  {
+    title: "Leveraging Positive Industry Mentions",
+    summary: "Feature positive mentions from industry news sites to enhance credibility.",
+    expectedGain: 2000,
+    implementationCost: 500,
+    timeline: "1 week",
+    costLevel: "Low" as const,
+    department: "Marketing",
+    evidence: [
+      "Some industry news sites mention Lounea positively",
+      "Competitor mentions are neutral",
+      "Customer interest in credible sources"
+    ],
+    implementationSteps: [
+      "Include media logos or quotes on the homepage",
+      "Promote through marketing channels",
+      "Monitor customer feedback"
+    ],
+    riskLevel: "Low",
+    dataSources: [
+      "Industry news sites",
+      "Customer surveys",
+      "Competitor analysis"
+    ]
+  },
+  {
+    title: "Differentiating on Customer Support Speed",
+    summary: "Highlight faster response times to attract frustrated customers.",
+    expectedGain: 3000,
+    implementationCost: 500,
+    timeline: "1 week",
+    costLevel: "Low" as const,
+    department: "Customer Service",
+    evidence: [
+      "Public complaints about competitor support response times",
+      "Lounea's internal metrics show faster response",
+      "Customer interest in responsive support"
+    ],
+    implementationSteps: [
+      "Highlight support speed KPIs on the support contact page",
+      "Update marketing materials",
+      "Train support team on messaging"
+    ],
+    riskLevel: "Low",
+    dataSources: [
+      "Customer feedback",
+      "Internal metrics",
+      "Competitor analysis"
+    ]
+  },
+  {
+    title: "Using Competitor Job Postings to Pre-Empt Their Moves",
+    summary: "Position Lounea as IoT-ready before competitor’s launch.",
+    expectedGain: 5000,
+    implementationCost: 500,
+    timeline: "1-2 weeks",
+    costLevel: "Low" as const,
+    department: "Marketing",
+    evidence: [
+      "Competitors hiring IoT engineers suggest future offerings",
+      "No immediate IoT marketing from Lounea yet",
+      "Customer interest in IoT solutions"
+    ],
+    implementationSteps: [
+      "Mention 'Future-Ready: Our network supports IoT devices' in product descriptions",
+      "Update marketing materials",
+      "Monitor customer feedback"
+    ],
+    riskLevel: "Low",
+    dataSources: [
+      "Competitor job postings",
+      "Customer surveys",
+      "Market analysis"
+    ]
+  },
+  {
+    title: "Emphasizing No Throttling Policies",
+    summary: "Highlighting a 'No Throttle' policy resonates with customers reading these complaints.",
+    expectedGain: 3000,
+    implementationCost: 500,
+    timeline: "1 week",
+    costLevel: "Low" as const,
+    department: "Marketing",
+    evidence: [
+      "Social media hints competitor may throttle speeds",
+      "No official competitor denial found",
+      "Customer interest in reliable speeds"
+    ],
+    implementationSteps: [
+      "Add 'No bandwidth throttling' statement on plan features list",
+      "Update marketing materials",
+      "Monitor customer feedback"
+    ],
+    riskLevel: "Low",
+    dataSources: [
+      "Social media analysis",
+      "Customer feedback",
+      "Competitor reviews"
+    ]
+  },
+  {
+    title: "Citing Public Rankings of Wi-Fi Hardware Compatibility",
+    summary: "Noting compatibility with top-reviewed devices can appeal to tech-savvy users.",
+    expectedGain: 5000,
+    implementationCost: 500,
+    timeline: "1 week",
+    costLevel: "Low" as const,
+    department: "Marketing",
+    evidence: [
+      "External tech reviews show certain routers as top-rated",
+      "Competitor bundles average hardware",
+      "Customer interest in compatible devices"
+    ],
+    implementationSteps: [
+      "State 'Tested with top-rated routers (per [Review Site])' on product pages",
+      "Update marketing materials",
+      "Monitor customer feedback"
+    ],
+    riskLevel: "Low",
+    dataSources: [
+      "Tech review sites",
+      "Customer feedback",
+      "Competitor analysis"
     ]
   }
 ];

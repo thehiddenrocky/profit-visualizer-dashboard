@@ -238,32 +238,34 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto py-8">
-        <div className="w-full">
-          <NotificationPanel />
-        </div>
-          
-        <div className="flex-1">
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-secondary mb-2">
-              Profitability Action Plan
-            </h1>
-            <p className="text-gray-600">
-              Prioritized actions to increase revenue, sorted by implementation cost
-            </p>
+        <div className="flex gap-8">
+          <div className="w-[380px] sticky top-8 self-start">
+            <NotificationPanel />
           </div>
+          
+          <div className="flex-1">
+            <div className="mb-8">
+              <h1 className="text-3xl font-bold text-secondary mb-2">
+                Profitability Action Plan
+              </h1>
+              <p className="text-gray-600">
+                Prioritized actions to increase revenue, sorted by implementation cost
+              </p>
+            </div>
 
-          <CategoryFilter
-            categories={categories}
-            selectedCategory={selectedCategory}
-            onSelectCategory={setSelectedCategory}
-          />
+            <CategoryFilter
+              categories={categories}
+              selectedCategory={selectedCategory}
+              onSelectCategory={setSelectedCategory}
+            />
 
-          <MarketIntelligence />
+            <MarketIntelligence />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {sortedActions.map((action) => (
-              <ActionCard key={action.title} {...action} />
-            ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {sortedActions.map((action) => (
+                <ActionCard key={action.title} {...action} />
+              ))}
+            </div>
           </div>
         </div>
       </div>

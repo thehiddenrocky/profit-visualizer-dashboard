@@ -29,7 +29,7 @@ interface MarketIntelligenceCardProps {
   implementationSteps: string[];
   riskLevel: string;
   dataSources: string[];
-  onTalkToAlfred?: () => void; // Made optional with '?'
+  onTalkToAlfred?: () => void;
 }
 
 export const MarketIntelligenceCard = ({
@@ -92,6 +92,16 @@ export const MarketIntelligenceCard = ({
         return [<AlertTriangle className="w-4 h-4 text-gray-600" />];
     }
   };
+
+  const getInitialMessage = () => 
+    `Hi! I noticed a quick win opportunity - ${title} could generate €${expectedGain} in additional monthly revenue. Would you like to know more?`;
+
+  const getSuggestedQuestions = () => [
+    `How do I implement ${title}?`,
+    `What's the detailed ROI calculation for this action?`,
+    `Can you break down the implementation steps?`,
+    `What are the main risks to consider?`
+  ];
 
   return (
     <>

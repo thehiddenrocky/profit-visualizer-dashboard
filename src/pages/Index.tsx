@@ -4,6 +4,7 @@ import { CategoryFilter } from "@/components/CategoryFilter";
 import { ChatInterface } from "@/components/chat/ChatInterface";
 import { MarketIntelligence } from "@/components/MarketIntelligence";
 import { NotificationPanel } from "@/components/NotificationPanel";
+import { AgentSwarmAnimation } from "@/components/AgentSwarmAnimation";
 
 interface Action {
   title: string;
@@ -244,27 +245,37 @@ const Index = () => {
           </div>
           
           <div className="flex-1">
-            <div className="mb-8">
-              <h1 className="text-3xl font-bold text-secondary mb-2">
-                Profitability Action Plan
-              </h1>
-              <p className="text-gray-600">
-                Prioritized actions to increase revenue, sorted by implementation cost
-              </p>
-            </div>
+            <div className="relative">
+              <div className="absolute top-0 w-full h-[200px] overflow-hidden pointer-events-none">
+                <AgentSwarmAnimation profitSignals={[
+                  { value: "€6.0K", position: { x: 30, y: 40 } },
+                  { value: "€4.0K", position: { x: 60, y: 70 } },
+                  { value: "€7.5K", position: { x: 80, y: 20 } }
+                ]} />
+              </div>
+              
+              <div className="mb-8 pt-[200px]">
+                <h1 className="text-3xl font-bold text-secondary mb-2">
+                  Profitability Action Plan
+                </h1>
+                <p className="text-gray-600">
+                  Prioritized actions to increase revenue, sorted by implementation cost
+                </p>
+              </div>
 
-            <CategoryFilter
-              categories={categories}
-              selectedCategory={selectedCategory}
-              onSelectCategory={setSelectedCategory}
-            />
+              <CategoryFilter
+                categories={categories}
+                selectedCategory={selectedCategory}
+                onSelectCategory={setSelectedCategory}
+              />
 
-            <MarketIntelligence />
+              <MarketIntelligence />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {sortedActions.map((action) => (
-                <ActionCard key={action.title} {...action} />
-              ))}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {sortedActions.map((action) => (
+                  <ActionCard key={action.title} {...action} />
+                ))}
+              </div>
             </div>
           </div>
         </div>

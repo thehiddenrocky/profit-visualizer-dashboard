@@ -99,3 +99,26 @@
     @apply bg-background text-foreground;
   }
 }
+
+.agent-dot {
+  filter: blur(1px);
+  animation: float 20s infinite linear;
+}
+
+.profit-popup {
+  animation: fadeInOut 2s ease-in-out;
+  opacity: 0;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(100px, -50px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(10px); }
+  20% { opacity: 1; transform: translateY(0); }
+  80% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}

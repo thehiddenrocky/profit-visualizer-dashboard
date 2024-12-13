@@ -9,15 +9,6 @@ interface MarketIntelligenceGridProps {
 }
 
 export const MarketIntelligenceGrid = ({ marketData, onTalkToAlfred }: MarketIntelligenceGridProps) => {
-  // Priority cards that should appear at the top
-  const priorityCardTitles = [
-    "Responding to Competitor Price Increase",
-    "Positioning Against Long-Term Contracts of Competitors",
-    "Showcasing Rapid Installation Times vs. Competitors",
-    "Improving Organic Visibility with Competitor Keyword Gaps",
-    "Highlighting Reliability Over Competitors' Downtime"
-  ];
-
   // Segment data by cost level
   const lowCostActions = marketData.filter(data => data.costLevel === "Low");
   const mediumCostActions = marketData.filter(data => data.costLevel === "Mid");
@@ -39,7 +30,7 @@ export const MarketIntelligenceGrid = ({ marketData, onTalkToAlfred }: MarketInt
           <MarketIntelligenceCard
             key={index}
             {...data}
-            title={priorityCardTitles.includes(data.title) ? `${data.title} ***` : data.title}
+            title={data.title}
             onTalkToAlfred={onTalkToAlfred}
           />
         ))}

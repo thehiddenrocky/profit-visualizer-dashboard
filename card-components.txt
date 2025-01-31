@@ -1,0 +1,424 @@
+import { MarketIntelligenceCard } from "../MarketIntelligenceCard";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Badge } from "@/components/ui/badge";
+import { TrendingUp, ChevronLeft, ChevronRight } from "lucide-react";
+import { useRef } from "react";
+
+interface MarketIntelligenceGridProps {
+  marketData: any[];
+  onTalkToAlfred: () => void;
+}
+
+export const MarketIntelligenceGrid = ({ marketData, onTalkToAlfred }: MarketIntelligenceGridProps) => {
+  const lowCostActions = marketData.filter(data => data.costLevel === "Low");
+  const mediumCostActions = marketData.filter(data => data.costLevel === "Mid");
+  const highCostActions = marketData.filter(data => data.costLevel === "High");
+
+  const handleScrollLeft = (ref: React.RefObject<HTMLDivElement>) => {
+    if (ref.current) {
+      ref.current.scrollBy({
+        left: -ref.current.offsetWidth,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const handleScrollRight = (ref: React.RefObject<HTMLDivElement>) => {
+    if (ref.current) {
+      ref.current.scrollBy({
+        left: ref.current.offsetWidth,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const renderSegment = (title: string, actions: any[], bgColor: string) => {
+    const containerRef = useRef<HTMLDivElement>(null);
+    
+    return (
+      <div className="mb-12">
+        <div className="flex items-center gap-2 mb-6">
+          <Badge className={`${bgColor} text-white px-4 py-2 text-lg font-semibold`}>
+            {title}
+          </Badge>
+          <TrendingUp className="w-5 h-5 text-green-600" />
+          <span className="text-green-600 font-medium">
+            Expected Monthly Profit Increase
+          </span>
+        </div>
+        
+        <div className="relative group">
+          <div 
+            ref={containerRef}
+            className="flex gap-4 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
+          >
+            {actions.map((data, index) => (
+              <div key={index} className="flex-none w-[350px]">
+                <MarketIntelligenceCard
+                  {...data}
+                  onTalkToAlfred={onTalkToAlfred}
+                />
+              </div>
+            ))}
+          </div>
+
+          {actions.length > 3 && (
+            <>
+              <button 
+                className="absolute left-0 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/60 p-4 rounded-r-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 h-[calc(100%-2rem)]"
+                onClick={() => handleScrollLeft(containerRef)}
+              >
+                <ChevronLeft className="h-6 w-6 text-white" />
+              </button>
+
+              <button 
+                className="absolute right-0 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/60 p-4 rounded-l-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 h-[calc(100%-2rem)]"
+                onClick={() => handleScrollRight(containerRef)}
+              >
+                <ChevronRight className="h-6 w-6 text-white" />
+              </button>
+            </>
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <ScrollArea className="h-[calc(100vh-200px)]">
+      <div className="space-y-8 pb-6 px-4">
+        {renderSegment("Low Cost Implementation Actions", lowCostActions, "bg-green-600")}
+        {renderSegment("Medium Cost Implementation Actions", mediumCostActions, "bg-yellow-600")}
+        {renderSegment("High Cost Implementation Actions", highCostActions, "bg-red-600")}
+      </div>
+    </ScrollArea>
+  );
+};import { MarketIntelligenceCard } from "../MarketIntelligenceCard";
+import { Badge } from "../ui/badge";
+import { TrendingUp, ChevronLeft, ChevronRight } from "lucide-react";
+import { lowCostCardsData } from "@/data/lowCostCards";
+import { useRef } from "react";
+
+export const LowCostActions = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleScrollLeft = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({
+        left: -containerRef.current.offsetWidth,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const handleScrollRight = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({
+        left: containerRef.current.offsetWidth,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  return (
+    <div className="mb-12">
+      <div className="flex items-center gap-2 mb-6">
+        <Badge className="bg-green-600 text-white px-4 py-2 text-lg font-semibold">
+          Low Cost Implementation Actions
+        </Badge>
+        <TrendingUp className="w-5 h-5 text-green-600" />
+        <span className="text-green-600 font-medium">
+          Expected Monthly Profit Increase
+        </span>
+      </div>
+      
+      <div className="relative group">
+        <div 
+          ref={containerRef}
+          className="flex gap-4 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
+        >
+          {lowCostCardsData.map((data, index) => (
+            <div key={index} className="flex-none w-[350px]">
+              <MarketIntelligenceCard {...data} />
+            </div>
+          ))}
+        </div>
+
+        {lowCostCardsData.length > 3 && (
+          <>
+            <button 
+              className="absolute left-0 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/60 p-4 rounded-r-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 h-[calc(100%-2rem)]"
+              onClick={handleScrollLeft}
+            >
+              <ChevronLeft className="h-6 w-6 text-white" />
+            </button>
+
+            <button 
+              className="absolute right-0 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/60 p-4 rounded-l-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 h-[calc(100%-2rem)]"
+              onClick={handleScrollRight}
+            >
+              <ChevronRight className="h-6 w-6 text-white" />
+            </button>
+          </>
+        )}
+      </div>
+    </div>
+  );
+};import { MarketIntelligenceCard } from "../MarketIntelligenceCard";
+import { Badge } from "../ui/badge";
+import { TrendingUp, ChevronLeft, ChevronRight } from "lucide-react";
+import { mediumCostCardsData } from "@/data/mediumCostCards";
+import { useRef } from "react";
+
+export const MediumCostActions = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleScrollLeft = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({
+        left: -containerRef.current.offsetWidth,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const handleScrollRight = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({
+        left: containerRef.current.offsetWidth,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  return (
+    <div className="mb-12">
+      <div className="flex items-center gap-2 mb-6">
+        <Badge className="bg-yellow-600 text-white px-4 py-2 text-lg font-semibold">
+          Medium Cost Implementation Actions
+        </Badge>
+        <TrendingUp className="w-5 h-5 text-green-600" />
+        <span className="text-green-600 font-medium">
+          Expected Monthly Profit Increase
+        </span>
+      </div>
+      
+      <div className="relative group">
+        <div 
+          ref={containerRef}
+          className="flex gap-4 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
+        >
+          {mediumCostCardsData.map((data, index) => (
+            <div key={index} className="flex-none w-[350px]">
+              <MarketIntelligenceCard {...data} />
+            </div>
+          ))}
+        </div>
+
+        {mediumCostCardsData.length > 3 && (
+          <>
+            <button 
+              className="absolute left-0 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/60 p-4 rounded-r-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 h-[calc(100%-2rem)]"
+              onClick={handleScrollLeft}
+            >
+              <ChevronLeft className="h-6 w-6 text-white" />
+            </button>
+
+            <button 
+              className="absolute right-0 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/60 p-4 rounded-l-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 h-[calc(100%-2rem)]"
+              onClick={handleScrollRight}
+            >
+              <ChevronRight className="h-6 w-6 text-white" />
+            </button>
+          </>
+        )}
+      </div>
+    </div>
+  );
+};import { MarketIntelligenceCard } from "../MarketIntelligenceCard";
+import { Badge } from "../ui/badge";
+import { TrendingUp, ChevronLeft, ChevronRight } from "lucide-react";
+import { useRef } from "react";
+
+export const HighCostActions = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const highCostData = [
+    {
+      title: "Deploy Regional Fiber Network Expansion",
+      summary: "Population growth in new housing areas - infrastructure expansion opportunity",
+      expectedGain: 75000,
+      implementationCost: 400000,
+      timeline: "12-18 months",
+      costLevel: "High" as const,
+      department: "Infrastructure",
+      evidence: [
+        "Urban development reports show growth",
+        "Predicted increase in residential complexes",
+        "Strong latent demand in forums"
+      ],
+      implementationSteps: [
+        "Secure local permits",
+        "Plan fiber line deployment",
+        "Execute infrastructure work"
+      ],
+      riskLevel: "High",
+      dataSources: [
+        "Urban development reports",
+        "Real estate news",
+        "Local media coverage"
+      ]
+    },
+    {
+      title: "Expand Fiber Network to Underserved Areas",
+      summary: "Identified underserved regions with high demand - market penetration opportunity",
+      expectedGain: 50000,
+      implementationCost: 300000,
+      timeline: "6-12 months",
+      costLevel: "High" as const,
+      department: "Infrastructure",
+      evidence: [
+        "Market analysis indicates demand",
+        "Community feedback supports expansion",
+        "Competitor presence is minimal"
+      ],
+      implementationSteps: [
+        "Conduct feasibility studies",
+        "Engage with local stakeholders",
+        "Develop marketing strategy"
+      ],
+      riskLevel: "Medium",
+      dataSources: [
+        "Market research reports",
+        "Community surveys",
+        "Competitor analysis"
+      ]
+    },
+    {
+      title: "Upgrade Existing Fiber Infrastructure",
+      summary: "Aging infrastructure identified - opportunity to enhance service quality",
+      expectedGain: 60000,
+      implementationCost: 250000,
+      timeline: "8-10 months",
+      costLevel: "High" as const,
+      department: "Infrastructure",
+      evidence: [
+        "Customer complaints about service",
+        "Performance metrics indicate need for upgrades",
+        "Competitor upgrades are underway"
+      ],
+      implementationSteps: [
+        "Assess current infrastructure",
+        "Plan upgrade phases",
+        "Communicate with customers"
+      ],
+      riskLevel: "Medium",
+      dataSources: [
+        "Customer feedback",
+        "Performance analytics",
+        "Industry benchmarks"
+      ]
+    },
+    {
+      title: "Launch 5G Fiber Services",
+      summary: "Emerging demand for 5G services - capitalize on technological advancements",
+      expectedGain: 80000,
+      implementationCost: 500000,
+      timeline: "12-24 months",
+      costLevel: "High" as const,
+      department: "R&D",
+      evidence: [
+        "Market trends show increasing 5G adoption",
+        "Competitors are launching similar services",
+        "Consumer interest in faster internet"
+      ],
+      implementationSteps: [
+        "Research technology requirements",
+        "Develop service offerings",
+        "Market launch strategy"
+      ],
+      riskLevel: "High",
+      dataSources: [
+        "Industry reports",
+        "Consumer surveys",
+        "Competitor analysis"
+      ]
+    },
+  ];
+
+  const handleScrollLeft = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({
+        left: -containerRef.current.offsetWidth,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const handleScrollRight = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({
+        left: containerRef.current.offsetWidth,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  return (
+    <div className="mb-12">
+      <div className="flex items-center gap-2 mb-6">
+        <Badge className="bg-red-600 text-white px-4 py-2 text-lg font-semibold">
+          High Cost Implementation Actions
+        </Badge>
+        <TrendingUp className="w-5 h-5 text-green-600" />
+        <span className="text-green-600 font-medium">
+          Expected Monthly Profit Increase
+        </span>
+      </div>
+      
+      <div className="relative group">
+        <div 
+          ref={containerRef}
+          className="flex gap-4 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
+        >
+          {highCostData.map((data, index) => (
+            <div key={index} className="flex-none w-[350px]">
+              <MarketIntelligenceCard {...data} />
+            </div>
+          ))}
+        </div>
+
+        {highCostData.length > 3 && (
+          <>
+            <button 
+              className="absolute left-0 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/60 p-4 rounded-r-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 h-[calc(100%-2rem)]"
+              onClick={handleScrollLeft}
+            >
+              <ChevronLeft className="h-6 w-6 text-white" />
+            </button>
+
+            <button 
+              className="absolute right-0 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/60 p-4 rounded-l-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 h-[calc(100%-2rem)]"
+              onClick={handleScrollRight}
+            >
+              <ChevronRight className="h-6 w-6 text-white" />
+            </button>
+          </>
+        )}
+      </div>
+    </div>
+  );
+};import { MarketIntelligenceHeader } from "./market-intelligence/MarketIntelligenceHeader";
+import { LowCostActions } from "./market-intelligence/LowCostActions";
+import { MediumCostActions } from "./market-intelligence/MediumCostActions";
+import { HighCostActions } from "./market-intelligence/HighCostActions";
+
+export const MarketIntelligence = () => {
+  return (
+    <div className="mb-12">
+      <MarketIntelligenceHeader />
+      <LowCostActions />
+      <MediumCostActions />
+      <HighCostActions />
+    </div>
+  );
+};
